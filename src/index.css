@@ -1,13 +1,95 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-color:rgb(34, 34, 34);
+  color:beige;
+    margin: 0;
+  
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+h1{
+  text-align: right;
 }
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Open Sans', sans-serif;
+}
+
+
+
+.slide-in-left-enter {
+  transform: translateX(-100%);
+}
+
+.slide-in-left-enter-active {
+  transform: translateX(0);
+  opacity: 1;
+  transition: all 200ms;
+}
+
+.slide-in-left-exit {
+  transform: translateX(0%);
+  opacity: 1;
+}
+
+.slide-in-left-exit-active {
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: all 200ms;
+}
+
+.center {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.list-item{
+  display:flex;
+  flex-direction: row;
+  justify-content:space-between;
+  
+ }
+
+ .list-subitem{
+  display:flex;
+   flex-direction: row;
+   justify-content: center;
+  
+}
+.name-top-handler{
+  display: flex;
+  flex-direction: column;
+  }
+
+.list-index{
+  padding: 0px 10px 0 0;
+  align-self: center;
+}
+.list-elements{
+  padding-left: 4px;
+  padding-right: 4px;
+  color:gray;
+  }
+
+  .list-name-wrapper2{
+  
+  }
+
+
+.input-elements{
+  padding:5px;
+  margin: 1px;
+}
+.input-wrapper{
+    
+  display:flex;
+  flex-direction: column;
+   align-content: center;
+     
+};
+
