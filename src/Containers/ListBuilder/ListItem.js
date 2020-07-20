@@ -8,7 +8,8 @@ const ListItem = props => {
                }
         return(                    
 <div>                                                 
-<Card className="list-item">
+<Card>
+<div className="list-item">
 
 <div className="list-subitem">
         <div className="list-index">{props.asd} </div>
@@ -26,6 +27,7 @@ const ListItem = props => {
         {//<button className="list-elements" >EDIT</button>
         }
         <button  className="list-elements"onClick={deletelocal}>DEL</button> </div>
+</div>
 </Card>
 </div>                             
                  
