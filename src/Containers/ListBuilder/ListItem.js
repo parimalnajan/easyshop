@@ -11,7 +11,7 @@ const ListItem = props => {
 <Card className="list-item">
 
 <div className="list-subitem">
-        <div className="list-index">{props.asd} id={props.id}</div>
+        <div className="list-index">{props.asd} </div>
         <div className="name-top-handler">
                 <div className="list-name-wrapper">
                 <div className="list-elements">{props.itemname}</div>
