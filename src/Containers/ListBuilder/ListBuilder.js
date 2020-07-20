@@ -1,30 +1,35 @@
 import React, { Component,useState, useEffect } from "react";
-//import Aux from '../../Hoc/Aux';
-//import   Card   from "./Card";
+
 import ListItem from "./ListItem";
 import InputBox from "../../Components/Layout/InputBox";
 
 const ListBuilder =()=>{ 
-        
-      const  [listx,setlistx] =  useState( 
+             
+        const  [listx,setlistx] =  useState( 
 
-        [ {id:1,item:"test item",flavor:"vanilla",qty:'5'},
-        ]
-          );
+        [{id:1,item:"test item",flavor:"vanilla",qty:'5'},]);
 
-          let idcounter=1 ;
+let idgen=()=>{
+ let genid = Math.floor((Math.random() * 10) + 1);
+        for(let i=0; i<listx.length;i++){ 
+                if (listx[i].id===genid) {
+                        console.log("duplicate genereate, regen");
+                    return idgen();
+                   
+                } 
+               else if(listx.length===9){alert("exceeded coded id limit"); return;} 
+                }
+        return genid;
+}
 
-let addItemBot =(itemrecieve)=>{
-               
-                idcounter=idcounter+1;
-                itemrecieve.id= idcounter;
-                console.log("generated id:" ,idcounter);console.log("recieved and adding");console.log(itemrecieve);
+let addItemBot =(itemrecieve)=>{              
+               itemrecieve.id=idgen();
+                console.log("generated id:" ,itemrecieve.idcounter);console.log("recieved and adding");console.log(itemrecieve);
                // listx.push(itemrecieve); this worked for class
                // setlistx(listx.concat(itemrecieve)); bad for sync etc
                 setlistx((prevlistx) =>{
                 return prevlistx.concat(itemrecieve);
-                
-              
+                             
                 });
                
  }
@@ -34,9 +39,7 @@ let deleteItem =(id2) =>{
         setlistx((listx) =>{                
                 
                     
-        let abc=  listx.filter(x => x.id!=id2);  
-
-        
+        let abc=  listx.filter(x => x.id!==id2);  
          return abc;   
        //return listx.splice(id2,1);       
                                 
@@ -48,42 +51,16 @@ let deleteItem =(id2) =>{
  }
 
 
-
-
- /*const getid=(itemforindex)=>{
-
-        const itemc=itemforindex.item;
-        const flavorc=itemforindex.flavor;
-        const qtyc=itemforindex.qty;
-
-        const index= listx.findIndex(
-                x =>x.item===itemc && x.flavor===flavorc && x.qty==qtyc);
-        return index;   
-        }
-
-    
-       
-
-const setid = (newid) =>{
-        
-       console.log('this is the newid'); console.log(newid);
-       console.log(listx[newid]);
-       
-       // ID=newid;
-                  // return[...prevlistx,itemrecieve]
-}*/
-
-        
 useEffect(()=>{
-       
+    
         console.log(listx);
 
 },[listx])
 
-      
+      let idcount=1;
 
 return(
-<div> <InputBox  additem={addItemBot}  />
+<div> <InputBox additem={addItemBot}  />
               
               {                                
                listx.map((itemx,index) =>(
@@ -96,8 +73,7 @@ return(
                 itemflavor={itemx.flavor}
                 itemqty={itemx.qty}
                
-                deleteItem={deleteItem}
-        
+                deleteItem={deleteItem}        
                            
                 //additem={this.additem}
                 ></ListItem>  ))

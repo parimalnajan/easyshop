@@ -30,15 +30,14 @@ const setnull=()=>{
     setitemText(''); setqtyText(''); setflavorText('');
 }
 
-//let newid= props.getid2(itemText,flavorText,qtyText);
 
 const addItemLocal = ()=>
 { 
-    //let newid= props.getid2(itemText,flavorText,qtyText);
+  
     const newitem={ item:itemText,
                     flavor:flavorText,
                     qty:qtyText,
-                    //id:newid
+                   
                     };
                    
     
