@@ -1,5 +1,5 @@
 
-import React, { Component, useState, useEffect } from "react";
+import React, {  useState, } from "react";
 //import Aux from '../../Hoc/Aux';
 import   Card   from '../../Containers/ListBuilder/Card';
 //import Listitem from '../../Containers/ListBuilder/ListItem';
@@ -41,7 +41,7 @@ const addItemLocal = ()=>
                     };
                    
     
-                    if(newitem.item=='' || newitem.qty=='')    
+                    if(newitem.item==='' || newitem.qty==='')    
                     {alert("Please enter item name and quantity");
                         return}
 

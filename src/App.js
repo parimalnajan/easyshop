@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router,
-        Route,Redirect,Switch} from 'react-router-dom';
+import {BrowserRouter as Router} from 'react-router-dom';
 
 import ListBuilder from './Containers/ListBuilder/ListBuilder'
-import Layout from './Components/Layout/Layout';
-import MainNav from './Components/Layout/MainNav'
+//import Layout from './Components/Layout/Layout';
+//import MainNav from './Components/Layout/MainNav';
 import MainNavigation from './Components/Layout/MainNav';
-import Card from './Containers/ListBuilder/Card';
+//import Card from './Containers/ListBuilder/Card';
 import './App.css';
 import './index.css';
-import InputBox from './Components/Layout/InputBox';
+//import InputBox from './Components/Layout/InputBox';
 
 class App extends Component {
   render(){ 

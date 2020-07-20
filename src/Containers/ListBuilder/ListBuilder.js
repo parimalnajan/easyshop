@@ -1,4 +1,4 @@
-import React, { Component,useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 import ListItem from "./ListItem";
 import InputBox from "../../Components/Layout/InputBox";
@@ -57,7 +57,7 @@ useEffect(()=>{
 
 },[listx])
 
-      let idcount=1;
+    
 
 return(
 <div> <InputBox additem={addItemBot}  />
