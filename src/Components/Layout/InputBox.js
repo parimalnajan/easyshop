@@ -9,25 +9,37 @@ import "./InputBox.css";
 
 const InputBox = (props) =>{  
 
-const [itemText,setitemText]= useState('');
+const [itemText,setitemText]= useState('Item');
 const textChangeBot1= event =>{
        setitemText(event.target.value);
    }
 
-const [flavorText,setflavorText]= useState('');
+const [flavorText,setflavorText]= useState('Variety');
 const textChangeBot2= event =>{
    setflavorText(event.target.value);
 }
 
-const [qtyText,setqtyText]= useState('');
+const [qtyText,setqtyText]= useState('Quantity');   
 const textChangeBot3= event =>{
     setqtyText(event.target.value);
 }
 
 
+const setnull1=()=>{
+    // itemText = ''; qtyText= ''; flavorText= ''; without state , dosnt work
+    setitemText('');
+}
+const setnull2=()=>{
+    // itemText = ''; qtyText= ''; flavorText= ''; without state , dosnt work
+   setflavorText('');
+}
+const setnull3=()=>{
+    // itemText = ''; qtyText= ''; flavorText= ''; without state , dosnt work
+    setqtyText('');
+}
 const setnull=()=>{
     // itemText = ''; qtyText= ''; flavorText= ''; without state , dosnt work
-    setitemText(''); setqtyText(''); setflavorText('');
+    setitemText('Item'); setqtyText('Quantity'); setflavorText('Variety');
 }
 
 
@@ -62,11 +74,11 @@ const addItemLocal = ()=>
     <div className="list-index">Enter item: </div>
     <div className="name-top-handler">
          <div className="list-name-wrapper">
-           <input className="list-elements" onChange={textChangeBot1} value ={itemText}></input>
+           <input className="list-elements" onClick= {setnull1} onChange={textChangeBot1} value ={itemText}></input>
          </div>
             
- <input className="list-elements"onChange={textChangeBot2} value ={flavorText}></input>
- <input className="list-elements"onChange={textChangeBot3} value ={qtyText}></input>
+ <input className="list-elements"onClick= {setnull2} onChange={textChangeBot2} value ={flavorText}></input>
+ <input className="list-elements"onClick= {setnull3} onChange={textChangeBot3} value ={qtyText}></input>
  </div></div>
  
  <div className="list-subitem">
