@@ -17,7 +17,7 @@ let idgen=()=>{
                     return idgen();
                    
                 } 
-               else if(listx.length===9){alert("exceeded coded id limit"); return;} 
+               else if(listx.length===10){alert("exceeded coded id limit"); return;} 
                 }
         return genid;
 }
