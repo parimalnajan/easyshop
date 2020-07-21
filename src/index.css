@@ -54,7 +54,6 @@ html {
   justify-content:space-between;
   
  }
-
  .list-subitem{
   display:flex;
    flex-direction: row;
@@ -75,10 +74,8 @@ html {
   padding-right: 4px;
   color:gray;
   }
-
-  .list-name-wrapper2{
   
-  }
+
 
 
 .input-elements{
@@ -91,5 +88,15 @@ html {
   flex-direction: column;
    align-content: center;
      
-};
+}
+.card {
+  position: relative;
+  margin: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  border-radius: 6px;
+  padding: 1rem;
+  overflow: hidden;
+  background: white;
+  color:black;
+}
 
