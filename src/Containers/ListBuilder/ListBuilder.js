@@ -75,8 +75,10 @@ return(
                
                 deleteItem={deleteItem}        
                            
-                //additem={this.additem}
-                ></ListItem>  ))
+                
+                >
+                     
+                </ListItem>  ))
                 
                 }                         
                              
