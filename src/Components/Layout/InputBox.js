@@ -2,6 +2,7 @@
 import React, {  useState, } from "react";
 //import Aux from '../../Hoc/Aux';
 import   Card   from '../../Containers/ListBuilder/Card';
+import '../../Containers/ListBuilder/Card.css';
 //import Listitem from '../../Containers/ListBuilder/ListItem';
 
 import "./InputBox.css";
@@ -27,15 +28,15 @@ const textChangeBot3= event =>{
 
 const setnull1=()=>{
     // itemText = ''; qtyText= ''; flavorText= ''; without state , dosnt work
-    setitemText('');
+    if(itemText==='Item')setitemText('');
 }
 const setnull2=()=>{
     // itemText = ''; qtyText= ''; flavorText= ''; without state , dosnt work
-   setflavorText('');
+   if(flavorText==='Variety')setflavorText('');
 }
 const setnull3=()=>{
     // itemText = ''; qtyText= ''; flavorText= ''; without state , dosnt work
-    setqtyText('');
+    if(qtyText==='Quantity')setqtyText('');
 }
 const setnull=()=>{
     // itemText = ''; qtyText= ''; flavorText= ''; without state , dosnt work
@@ -53,7 +54,7 @@ const addItemLocal = ()=>
                     };
                    
     
-                    if(newitem.item==='' || newitem.qty==='')    
+                    if(newitem.item==='Item' || newitem.qty==='Quantity'|| newitem.flavor==='Variety')    
                     {alert("Please enter item name and quantity");
                         return}
 
@@ -68,7 +69,8 @@ const addItemLocal = ()=>
 
     return(
 
- <Card  className="list-item">
+ <Card>
+     <div  className="list-item">
 
  <div className="list-subitem">
     <div className="list-index">Enter item: </div>
@@ -83,6 +85,8 @@ const addItemLocal = ()=>
  
  <div className="list-subitem">
  <button className="list-elements"  onClick={addItemLocal} >ADD</button>
+ </div>
+
  </div>
 </Card>
 
