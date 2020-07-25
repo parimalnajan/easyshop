@@ -9,22 +9,10 @@ const ListBuilder =()=>{
 
         [{id:1,item:"test item",flavor:"vanilla",qty:'5'},]);
 
-let idgen=()=>{
- let genid = Math.floor((Math.random() * 10) + 1);
-        for(let i=0; i<listx.length;i++){ 
-                if (listx[i].id===genid) {
-                        console.log("duplicate genereate, regen");
-                    return idgen();
-                   
-                } 
-               else if(listx.length===10){alert("exceeded coded id limit"); return;} 
-                }
-        return genid;
-}
+
 
 let addItemBot =(itemrecieve)=>{              
-               itemrecieve.id=idgen();
-                console.log("generated id:" ,itemrecieve.idcounter);console.log("recieved and adding");console.log(itemrecieve);
+              
                // listx.push(itemrecieve); this worked for class
                // setlistx(listx.concat(itemrecieve)); bad for sync etc
                 setlistx((prevlistx) =>{
@@ -50,6 +38,27 @@ let deleteItem =(id2) =>{
        
  }
 
+ let editItem = (id2) =>{
+        let newarr = [...listx];
+        let recid = id2.id;
+               //  a=editedItem.name;                 b=editedItem.flavor;                 c=editedItem.qty;
+               for(let i =0; i<newarr.length;i++){
+                if(newarr[i].id===recid){
+                       console.log("editingid :", recid);
+                       console.log(newarr[i]);
+                       newarr[i]=id2;
+                       //newarr[i].flavor='edit';
+                     //  newarr[i].qty='edit'; 
+                       setlistx(newarr);                       
+                }
+                
+               // newarr[recivid]=id2;
+                //setlistx(newarr)
+}}
+
+ 
+
+
 
 useEffect(()=>{
     
@@ -60,7 +69,7 @@ useEffect(()=>{
     
 
 return(
-<div> <InputBox additem={addItemBot}  />
+<div> <InputBox additem={addItemBot} listx={listx} />
               
               {                                
                listx.map((itemx,index) =>(
@@ -73,8 +82,9 @@ return(
                 itemflavor={itemx.flavor}
                 itemqty={itemx.qty}
                
-                deleteItem={deleteItem}        
-                           
+                deleteItem={deleteItem}  
+                editItem={editItem}     
+                   
                 
                 >
                      

@@ -44,21 +44,36 @@ const setnull=()=>{
 }
 
 
+let idgen=()=>{
+    let genid = Math.floor((Math.random() * 10) + 1);
+           for(let i=0; i<props.listx.length;i++){ 
+                   if (props.listx[i].id===genid) {
+                           console.log("duplicate genereate, regen");
+                       return idgen();
+                      
+                   } 
+                  else if(props.listx.length===10){alert("exceeded coded id limit"); return;} 
+                   }
+           return genid;}
+
 const addItemLocal = ()=>
 { 
-  
+    //itemrecieve.id=idgen();                    console.log("generated id:" ,itemrecieve.idcounter);console.log("recieved and adding");console.log(itemrecieve);
+    let tempid= idgen();
+    
     const newitem={ item:itemText,
                     flavor:flavorText,
                     qty:qtyText,
-                   
+                    id:tempid
                     };
-                   
-    
+                    
                     if(newitem.item==='Item' || newitem.qty==='Quantity'|| newitem.flavor==='Variety')    
                     {alert("Please enter item name and quantity");
                         return}
-
+                            
     props.additem(newitem);
+    
+console.log("generated id:" ,tempid);console.log("recieved and adding");console.log(newitem);   
     setnull();
      
 
