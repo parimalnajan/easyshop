@@ -1,28 +1,40 @@
-import React, { Component } from 'react';
-import {BrowserRouter as Router} from 'react-router-dom';
+import React, { Component, useState, useEffect } from 'react';
+import {BrowserRouter as Router, Route,Switch} from 'react-router-dom';
 
-import ListBuilder from './Containers/ListBuilder/ListBuilder'
-//import Layout from './Components/Layout/Layout';
-//import MainNav from './Components/Layout/MainNav';
+import ListBuilder from './Containers/ListBuilder/ListBuilder';
+import Navigation from '../src/constants/navigation';
+import * as ROUTES from '../src/constants/routes';
 import MainNavigation from './Components/Layout/MainNav';
-//import Card from './Containers/ListBuilder/Card';
+import Display from './Components/pages/display';
 import './App.css';
 import './index.css';
+import Auth from './Components/pages/auth';
+import firebase from 'firebase';
 //import InputBox from './Components/Layout/InputBox';
 
-class App extends Component {
-  render(){ 
-    return (
-      <Router>
 
-      <MainNavigation/>
-      <h2>Current List:</h2>
-      
+let App=() =>{
+  let firebaseinit=true;
+let [uid,setuid]=useState('');
+ uid='test';
 
-      <ListBuilder><p></p></ListBuilder>
-      </Router>     
-    );
-  }
+  return firebaseinit!==false? (
+    <div><MainNavigation/><h2>Main</h2> 
+     
+        <Switch>
+          <Route path exact = "/" component={Auth}/>
+          <Route path = "/auth" component={Auth} />
+          <Route path = "/:user/account"><Display/></Route>
+          <Route path ="/:user/list"><ListBuilder/></Route>
+          
+        
+        
+        </Switch>
+     
+    </div>
+
+    ): <div>Loading....</div>;
+  
 }
 
 export default App;

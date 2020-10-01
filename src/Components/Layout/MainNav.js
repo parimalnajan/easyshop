@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
-
 import Layout from './Layout';
 import './MainNav.css';
 import NavLinks from './NavLinks';
@@ -18,10 +17,9 @@ const MainNavigation = props =>{
     
     };
 
-    return( <React.Fragment>
-        {drawerIsOpen &&<BackDrop onClick={closeDrawerBot} />}
-
-       
+    return( <React.Fragment> 
+        
+           
         
         <Layout>
             <button className= "main-navigation__menu-btn" onClick={openDrawerBot}>
@@ -32,16 +30,17 @@ const MainNavigation = props =>{
 
             <h1 className="main-navigation__title"><Link to="/">EasyShop</Link></h1>
             <nav className="main-navigation__header-nav">
-                <NavLinks />
+                <NavLinks /> 
             </nav> 
 
         </Layout>
-
-        <SideDrawer  show= {drawerIsOpen} >
+        <SideDrawer show= {drawerIsOpen} >
+       
             <nav className="main-navigation__drawer-nav">
                 <NavLinks onClick={closeDrawerBot} />
-            </nav>
+            </nav> {drawerIsOpen &&<BackDrop onClick={closeDrawerBot} />}     
         </SideDrawer>
+       
         </React.Fragment>
     )
 };

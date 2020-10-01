@@ -5,6 +5,7 @@ import   Card   from "./Card";
 const ListItem = props => {     
 
         const deletelocal =()=>{props.deleteItem(props.id);
+               // props.deletefb(props.id);
         
         }
      
