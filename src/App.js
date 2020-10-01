@@ -24,8 +24,8 @@ let [uid,setuid]=useState('');
         <Switch>
           <Route path exact = "/" component={Auth}/>
           <Route path = "/auth" component={Auth} />
-          <Route path = "/:user/account"><Display/></Route>
-          <Route path ="/:user/list"><ListBuilder/></Route>
+          <Route path = "/account"><Display/></Route>
+          <Route path ="/list"><ListBuilder/></Route>
           
         
         
