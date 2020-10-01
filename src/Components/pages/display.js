@@ -8,7 +8,7 @@ import Auth from './auth';
       firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
          setUser(user.uid);
-        } else { setUser('Loading');
+        } else { console.log('nousertemp');
           // No user is signed in.
         }
       });

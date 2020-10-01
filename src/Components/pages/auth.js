@@ -61,7 +61,7 @@ if (user != null) {
 
 const smth=()=>{
   var user = firebase.auth().currentUser;
-  Setau( user.uid);
+  Setau(user.uid);
   if (user) {
     console.log('userid:' + au);
   } else {
@@ -137,11 +137,11 @@ const tailLayout = {
       </Form.Item>
 
       <Form.Item {...tailLayout}>
-        <Button type="primary" htmlType="submit" onClick={signin}>
+        <Button type="primary"  onClick={signin}>
           Sign in with Google
         </Button>
 
-        <Button type="primary" htmlType="submit" onClick={smth}>
+        <Button type="primary" onClick={smth}>
           Show ID
         </Button>
       </Form.Item>
