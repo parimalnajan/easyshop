@@ -13,7 +13,7 @@ const ListBuilder =()=>{
                   
             
                
-              } else { setUser('Loading..');
+              } else { setUser('Loading');
                 // No user is signed in.
               }});            
               },[])
