@@ -138,23 +138,16 @@ const tailLayout = {
 
       <Form.Item {...tailLayout}>
         <Button type="primary" htmlType="submit" onClick={signin}>
-          Submit
+          Sign in with Google
         </Button>
 
         <Button type="primary" htmlType="submit" onClick={smth}>
-          Do smth
+          Show ID
         </Button>
       </Form.Item>
     </Form>
 
-    
-<Switch>
-
-<Route path = "/:user/account"><Display id={au}/></Route>
-<Route path ="/:user/list"><ListBuilder/></Route>
-
-</Switch>
-
+ 
 
 </div>
   );
