@@ -1,13 +1,7 @@
 import React ,{useState, useEffect} from 'react';
 import {crateStore} from 'redux';
-
-
 import ListBuilder from '../../Containers/ListBuilder/ListBuilder';
-
 import MainNavigation from '../../Components/Layout/MainNav';
-
-
-
 import  { userRef, firebaseapp } from '../../firebase';
 import * as firebase from 'firebase';
 import { Form, Input, Button, Checkbox } from 'antd';
@@ -21,7 +15,9 @@ import '../../../node_modules/antd/dist/antd.css';
 
 const Layout = (props) => {
   let[au,Setau]= useState('');
+  let[showstuff,setstuff]=useState(false);
 
+ 
   var provider = new firebase.auth.GoogleAuthProvider();
 
   const signin= () =>{    
@@ -46,7 +42,7 @@ const Layout = (props) => {
     
 var user = firebase.auth().currentUser;
 
-if (user != null) {
+if (user != null||showstuff==true) {
   user.providerData.forEach(function (profile) {
     console.log("Sign-in provider: " + profile.providerId);
     console.log("  Provider-specific UID: " + profile.uid);
@@ -58,6 +54,17 @@ if (user != null) {
 
 }
 
+let stuffbot=()=>{
+ 
+  var user = firebase.auth().currentUser;
+  user.providerData.forEach(function (profile) {
+    console.log("Sign-in provider: " + profile.providerId);
+    console.log("  Provider-specific UID: " + profile.uid);
+    console.log("  Name: " + profile.displayName);
+    console.log("  Email: " + profile.email);
+    console.log("  Photo URL: " + profile.photoURL);
+  })
+}
 
 const smth=()=>{
   var user = firebase.auth().currentUser;
@@ -66,6 +73,7 @@ const smth=()=>{
     console.log('userid:' + au);
   } else {
     console.log('nouser ');
+    stuffbot();
     }
     
    // firebase.database()    .ref('users')    .child(uid)    .set({      name:user.displayName,      age:'25',     quote:'second user quote'
@@ -105,7 +113,7 @@ const tailLayout = {
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
     >
-      <h1>{au}</h1>
+      
       <Form.Item
         label="Username"
         name="username"
@@ -141,13 +149,13 @@ const tailLayout = {
           Sign in with Google
         </Button>
 
-        <Button type="primary" onClick={smth}>
+        <Button type="primary" onClick={stuffbot}>
           Show ID
         </Button>
       </Form.Item>
     </Form>
 
- 
+    <h3>Your UserID= {au}</h3>
 
 </div>
   );

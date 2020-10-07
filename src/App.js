@@ -14,9 +14,9 @@ import firebase from 'firebase';
 
 
 let App=() =>{
+  
   let firebaseinit=true;
-let [uid,setuid]=useState('');
- uid='test';
+
 
   return firebaseinit!==false? (
     <div><MainNavigation/><h2>Main</h2> 

@@ -5,28 +5,54 @@ import InputBox from "../../Components/Layout/InputBox";
 
 import firebase, { database } from 'firebase';
 const ListBuilder =()=>{ 
+       let name={};
+       let [ui,setUi]=useState('');
+
+       const  [listx,setlistx] =  useState([]);
+       let [isdisabled,setDisabled]=useState(true);
+       let [loading,setLoading]=useState(true);
+       let [uid,setUser]=useState('');
+       let listref=firebase.database().ref("Users/"+uid+"/List");   
+ 
        var user = firebase.auth().currentUser;  
        useEffect(()=>{    
               firebase.auth().onAuthStateChanged(function(user) {
-              if (user) {
-               setUser(user.uid);
-                  
-            
+              if (isdisabled===true) {
+                     setUser(user.uid);    
+                    
+                     
+                
                
+            
+               let listref=firebase.database().ref("Users/"+user.uid+"/List");  
+               listref.once('value')
+               .then( snapshot =>{
+                      snapshot.forEach( item=>{       
+                              name = (item.val())
+                              console.log(name)
+                             //setlistx(listx.push(item.val()))
+                             let templist=[...listx];
+                            setlistx( (prevlistx) =>{
+                                   return prevlistx.concat(item.val());    }); 
+                                 setLoading(false);
+                                 setDisabled(false);
+        
+                     
+               })
+               })
+
+              
+                     
               } else { console.log('nouserfound temp')
+
+
                 // No user is signed in.
               }});            
               },[])
 
       
       // let testitem={id:'12',item:"22 item",flavor:"22",qty:'5'};
-       let [ui,setUi]=useState('');
-
-       const  [listx,setlistx] =  useState([]);
-       let [isdisabled,setDisabled]=useState(false);
-       let [uid,setUser]=useState('');
-       let listref=firebase.database().ref("Users/"+uid+"/List");   
- 
+      
        useEffect(()=>{
               
       
@@ -36,16 +62,15 @@ let setDisabledcall= ()=>{
 }    
 let fbfucntion =()=>{    
        setDisabled(true);
-       let listref=firebase.database().ref("Users/"+uid+"/List");    
-
+       let listref=firebase.database().ref("Users/"+uid+"/List");  
        listref.once('value')
        .then(snapshot =>{
               snapshot.forEach(item=>{       
-                                   console.log(item.val())
-                                   //setlistx(listx.push(item.val()))
-                                   let templist=[...listx];
-                                   setlistx((prevlistx) =>{
-                                          return prevlistx.concat(item.val());    }); 
+                     console.log(item.val())
+                     //setlistx(listx.push(item.val()))
+                     let templist=[...listx];
+                     setlistx((prevlistx) =>{
+                     return prevlistx.concat(item.val());    }); 
 
              
        })
@@ -119,8 +144,8 @@ useEffect(()=>{
 
 return(
 <div> <InputBox additem={addItemBot} listx={listx} additemfb={fbadd} />
-              
-              {                                
+              {loading? <div>....loading</div>:<> 
+              {                              
                listx.map((itemx,index) =>(
                 <ListItem 
                 key={index}
@@ -133,13 +158,12 @@ return(
                
                 deleteItem={deleteItem}  
                 editItem={editItem}     
-                   
-                
+                                   
                 >
                      
                 </ListItem>  ))
                 
-                }                         
+               }       </>}                  
   <div>                           
   <button disabled={isdisabled} onClick={fbfucntion}>Sync Cloud</button> </div>
  
@@ -148,3 +172,39 @@ return(
 }
 
 export default ListBuilder;
+
+
+/* 
+useEffect(()=>{    
+              firebase.auth().onAuthStateChanged(function(user) {
+              if (user) {setUser(user.uid);    
+                     if(isdisabled===false){return}
+                     
+                
+               
+            
+               let listref=firebase.database().ref("Users/"+user.uid+"/List");  
+               listref.once('value')
+               .then( snapshot =>{
+                      snapshot.forEach( item=>{       
+                              name = (item.val())
+                              console.log(name)
+                             //setlistx(listx.push(item.val()))
+                             let templist=[...listx];
+                            setlistx( (prevlistx) =>{
+                                   return prevlistx.concat(item.val());    }); 
+                                 setLoading(false);
+                                 setDisabled(false);
+        
+                     
+               })
+               })
+
+              
+                     
+              } else { console.log('nouserfound temp')
+                // No user is signed in.
+              }});            
+              },[])
+
+*/
