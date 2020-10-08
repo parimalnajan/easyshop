@@ -16,10 +16,8 @@ import firebase from 'firebase';
 let App=() =>{
   
   let firebaseinit=true;
-
-
   return firebaseinit!==false? (
-    <div><MainNavigation/><h2>Main</h2> 
+    <div><MainNavigation/>
      
         <Switch>
           <Route path exact = "/" component={Auth}/>

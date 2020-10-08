@@ -164,8 +164,6 @@ return(
                 </ListItem>  ))
                 
                }       </>}                  
-  <div>                           
-  <button disabled={isdisabled} onClick={fbfucntion}>Sync Cloud</button> </div>
  
     </div>       
         );    

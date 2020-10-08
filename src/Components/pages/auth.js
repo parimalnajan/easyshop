@@ -6,6 +6,7 @@ import  { userRef, firebaseapp } from '../../firebase';
 import * as firebase from 'firebase';
 import { Form, Input, Button, Checkbox } from 'antd';
 import Display from './display';
+import Card from '../../Containers/ListBuilder/Card';
 
 
 
@@ -54,17 +55,7 @@ if (user != null||showstuff==true) {
 
 }
 
-let stuffbot=()=>{
- 
-  var user = firebase.auth().currentUser;
-  user.providerData.forEach(function (profile) {
-    console.log("Sign-in provider: " + profile.providerId);
-    console.log("  Provider-specific UID: " + profile.uid);
-    console.log("  Name: " + profile.displayName);
-    console.log("  Email: " + profile.email);
-    console.log("  Photo URL: " + profile.photoURL);
-  })
-}
+
 
 const smth=()=>{
   var user = firebase.auth().currentUser;
@@ -73,7 +64,7 @@ const smth=()=>{
     console.log('userid:' + au);
   } else {
     console.log('nouser ');
-    stuffbot();
+   
     }
     
    // firebase.database()    .ref('users')    .child(uid)    .set({      name:user.displayName,      age:'25',     quote:'second user quote'
@@ -104,7 +95,7 @@ const tailLayout = {
 
 
 
-  return(<div>
+  return(<div className='profilecard'>
 
     <Form
       {...layout}
@@ -114,48 +105,20 @@ const tailLayout = {
       onFinishFailed={onFinishFailed}
     >
       
-      <Form.Item
-        label="Username"
-        name="username"
-        //rules={[{ required: true, message: 'Please input your username!' }]}
-      >
-        <Input />
       
-      </Form.Item>
-      <Form.Item
-        label="Email"
-        name="email"
-        //rules={[{ required: true, message: 'Please input your email!' }]}
-      >
-        <Input />
-      
-      </Form.Item>
-
-
-      <Form.Item
-        label="Password"
-        name="password"
-        //rules={[{ required: true, message: 'Please input your password!' }]}
-      >
-        <Input.Password />
-      </Form.Item>
-
-      <Form.Item {...tailLayout} name="remember" valuePropName="checked">
-        <Checkbox>Remember me</Checkbox>
-      </Form.Item>
-
       <Form.Item {...tailLayout}>
         <Button type="primary"  onClick={signin}>
           Sign in with Google
         </Button>
-
-        <Button type="primary" onClick={stuffbot}>
-          Show ID
+<button>Test</button>
+      </Form.Item>
+       <Form.Item {...tailLayout}> <Button type="primary" >
+          Sign Out
         </Button>
       </Form.Item>
     </Form>
 
-    <h3>Your UserID= {au}</h3>
+ 
 
 </div>
   );

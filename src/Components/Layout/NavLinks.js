@@ -9,7 +9,8 @@ const NavLinks = props => {
         <ul className="nav-links" onClick={props.onClick}>
          
             <li><NavLink to ="/list">ItemsList</NavLink></li>
-            <li><NavLink to = "/order">OrderStatus</NavLink></li>
+           {//} <li><NavLink to = "/order">OrderStatus</NavLink></li>
+}
             <li><NavLink to = "/account">MyAccount</NavLink></li>
             <li><NavLink to = "/" exact >AUTH</NavLink></li>
         

@@ -1,6 +1,12 @@
 import React, { useEffect ,useState} from 'react';
 import firebase, { database } from 'firebase';
+import {AiFillGithub,AiFillLinkedin} from 'react-icons/ai'
+import * as Icon from 'react-feather'
 import Auth from './auth';
+import Card from '../../Containers/ListBuilder/Card';
+
+
+import './auth.css';
 
   function Display(){   
 
@@ -61,19 +67,40 @@ import Auth from './auth';
       console.log(id);
    
 
-
     },[])
         
-        
-  return (<div>  {loading? <div>....loading</div>:<>
-                <p>dispaly called for : {id}</p>
+    let copy2=()=>{
+      let str="parimal.najan@gmail.com"
+       
+      navigator.clipboard.writeText(str).then(function() {
+        console.log("success");
+        alert("Email id copied to clipboard!");
+      }, function() {
+        console.log("fale")
+      });
+     
+      }
+    
+  return (<div className='maindisplay'>  {loading? <div>....loading</div>:<div className='profilecard' >
+
+               <div className='upper'>  <div className='ppcontainer'><img className='pp'src={details.d}></img></div> </div>
+              
+               <div className='lower'>
+                            
+                
+              
+               <p className='p-name'>{details.b}</p>
+                <p>{ui.quote}</p>
+                             
                
-                <p>name: {details.b}</p>
-                <p>name: {details.a}</p>
-                <p>name: {details.d}</p>
-                <p>name: {details.c}</p>
-                <p>age: {ui.age}</p>
-                <p>Quote:{ui.quote}</p></>
+                <div className='icons'>
+                  <a href="https://www.linkedin.com/in/parimal-najan-521008169/" target="_blank"><Icon.Linkedin /></a>
+               
+                  <a href="https://github.com/parimalnajan" target="_blank"><Icon.GitHub color="black"/></a>
+                  <a><Icon.Mail color="red" onClick={copy2}/></a>
+                  </div>
+                  
+                  </div></div>
         
 }
     
