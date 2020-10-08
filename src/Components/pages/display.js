@@ -72,7 +72,7 @@ import './auth.css';
     let copy2=()=>{
       let str="parimal.najan@gmail.com"
        
-      navigator.clipboard.writeText(str).then(function() {
+      navigator.clipboard.writeText(details.c).then(function() {
         console.log("success");
         alert("Email id copied to clipboard!");
       }, function() {
