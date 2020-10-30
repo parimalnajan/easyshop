@@ -4,13 +4,23 @@ import ListBuilder from '../../Containers/ListBuilder/ListBuilder';
 import MainNavigation from '../../Components/Layout/MainNav';
 import  { userRef, firebaseapp } from '../../firebase';
 import * as firebase from 'firebase';
-import { Form, Input, Button, Checkbox } from 'antd';
+
 import Display from './display';
 import Card from '../../Containers/ListBuilder/Card';
+import Googlebutton from '../Layout/Googlebutton';
+import ReactDOM from 'react-dom';
+//import route from 'can-route';
+//import DefineMap from 'can-define/map/map';
+
+ 
+//import AuthContainer from '/auth-container/auth-container';
+//import Tabs from 'auth-component/tabs/can-route';
+//import SignupForm from 'auth-component/forms/signup/';
+//import LoginForm from 'auth-component/forms/login/';
+//import SVGInline from 'auth-component/';
 
 
-
-import {BrowserRouter as Router, Route,Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Route,Switch, Redirect} from 'react-router-dom';
 import "./auth.css";
 import '../../../node_modules/antd/dist/antd.css';
 
@@ -55,7 +65,11 @@ if (user != null||showstuff==true) {
 
 }
 
+let setdemo = ()=>{
+const demoid= 'EITKl1eRYtTxAzqe8C5JlpvrAEl1';
 
+  
+}
 
 const smth=()=>{
   var user = firebase.auth().currentUser;
@@ -76,49 +90,15 @@ const smth=()=>{
 
 
 
-const layout = {
-  labelCol: { span: 6 },
-  wrapperCol: { span: 10 },
-};
-const tailLayout = {
-  wrapperCol: { offset: 6, span: 12 },
-};
 
 
-  const onFinish = values => {
-    console.log('Success:', values);
-  };
+  return(<div className='logincard'>
 
-  const onFinishFailed = errorInfo => {
-    console.log('Failed:', errorInfo);
-  };
+    <button className='b-btn' onClick={setdemo}>Test</button>     
 
-
-
-  return(<div className='profilecard'>
-
-    <Form
-      {...layout}
-      name="basic"
-      initialValues={{ remember: true }}
-      onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
-    >
-      
-      
-      <Form.Item {...tailLayout}>
-        <Button type="primary"  onClick={signin}>
-          Sign in with Google
-        </Button>
-<button>Test</button>
-      </Form.Item>
-       <Form.Item {...tailLayout}> <Button type="primary" >
-          Sign Out
-        </Button>
-      </Form.Item>
-    </Form>
-
- 
+    <Googlebutton onClick={signin}/> 
+    
+    <button className='b-btn' onClick={signin}>  Sign Out</button>
 
 </div>
   );

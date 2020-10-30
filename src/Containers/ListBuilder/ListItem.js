@@ -1,5 +1,6 @@
 import React , { useState } from "react";
 import   Card   from "./Card";
+import { DeleteOutlined,EditOutlined,CheckSquareOutlined,CloseSquareOutlined} from'@ant-design/icons';
 
 
 const ListItem = props => {     
@@ -75,9 +76,10 @@ const resettext=()=>{
                                 </div></div></div>
                                 
                         <div className="list-subitem">
-                                {<button className="list-elements" onClick={()=>setEdit(true)}>EDIT</button>
+                                {<EditOutlined className="list-elements" onClick={()=>setEdit(true)}style={{fontSize:"1.3rem",alignSelf:'center'}}></EditOutlined>
                                 }
-                                <button  className="list-elements"onClick={deletelocal}>DEL</button> </div>
+                                 <DeleteOutlined className="list-elements"onClick={deletelocal} style={{fontSize:"1.3rem",alignSelf:'center'}}/> </div>
+                               
                         </div>
                         </Card>
                         </div>
@@ -86,8 +88,7 @@ const resettext=()=>{
                 
                 
                 
-                        const editcode=(
-                                
+                        const editcode=(                                
                                 <Card>
                                     <div  className="list-item">
                                
@@ -103,16 +104,13 @@ const resettext=()=>{
                                 </div></div>
                                 
                                 <div className="list-subitem">
-                                <button className="list-elements"  onClick={resettext}  >Reset</button>
-                                <button className="list-elements"  onClick={(editItemLocal)}>Done</button>
+                                <CloseSquareOutlined className="list-elements"  onClick={resettext}  style={{fontSize:"1.5rem",alignSelf:'center'}}></CloseSquareOutlined>
+                                <CheckSquareOutlined className="list-elements"  onClick={(editItemLocal)}style={{fontSize:"1.5rem",alignSelf:'center'}}></CheckSquareOutlined>
                                 </div>
                                
                                 </div>
-                               </Card>
-                
-                        )
-                     
-
+                               </Card>                
+                        )              
 
 
 

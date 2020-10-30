@@ -4,7 +4,7 @@ import React, {  useState, } from "react";
 import   Card   from '../../Containers/ListBuilder/Card';
 import '../../Containers/ListBuilder/Card.css';
 //import Listitem from '../../Containers/ListBuilder/ListItem';
-
+import {PlusSquareOutlined} from'@ant-design/icons';
 import "./InputBox.css";
 
 
@@ -27,20 +27,26 @@ const textChangeBot3= event =>{
 
 
 const setnull1=()=>{
-    // itemText = ''; qtyText= ''; flavorText= ''; without state , dosnt work
+ 
     if(itemText==='Item')setitemText('');
+    setCol1("list-elements");
 }
 const setnull2=()=>{
-    // itemText = ''; qtyText= ''; flavorText= ''; without state , dosnt work
+  
    if(flavorText==='Variety')setflavorText('');
+   setCol2("list-elements");
 }
 const setnull3=()=>{
-    // itemText = ''; qtyText= ''; flavorText= ''; without state , dosnt work
+   
     if(qtyText==='Quantity')setqtyText('');
+    setCol3("list-elements");
 }
 const setnull=()=>{
     // itemText = ''; qtyText= ''; flavorText= ''; without state , dosnt work
     setitemText('Item'); setqtyText('Quantity'); setflavorText('Variety');
+    setCol2("altcolor");
+    setCol1("altcolor");
+    setCol3("altcolor");
 }
 
 
@@ -82,6 +88,10 @@ console.log("generated id:" ,tempid);console.log("recieved and adding");console.
  
 };
 
+let [textcol1,setCol1]=useState("altcolor");
+let [textcol2,setCol2]=useState("altcolor");
+let [textcol3,setCol3]=useState("altcolor");
+
 
 
     return(
@@ -93,15 +103,15 @@ console.log("generated id:" ,tempid);console.log("recieved and adding");console.
     <div className="list-index">Enter item: </div>
     <div className="name-top-handler">
          <div className="list-name-wrapper">
-           <input className="list-elements" onClick= {setnull1} onChange={textChangeBot1} value ={itemText}></input>
+           <input className={textcol1} onClick= {setnull1} onChange={textChangeBot1} value ={itemText}></input>
          </div>
             
- <input className="list-elements"onClick= {setnull2} onChange={textChangeBot2} value ={flavorText}></input>
- <input className="list-elements"onClick= {setnull3} onChange={textChangeBot3} value ={qtyText}></input>
+ <input className={textcol2}onClick= {setnull2} onChange={textChangeBot2} value ={flavorText}></input>
+ <input className={textcol3}onClick= {setnull3} onChange={textChangeBot3} value ={qtyText}></input>
  </div></div>
  
  <div className="list-subitem">
- <button className="list-elements"  onClick={addItemLocal} >ADD</button>
+ <PlusSquareOutlined className="list-elements"  onClick={addItemLocal} style={{fontSize:"1.5rem",alignSelf:'center'}} ></PlusSquareOutlined>
  </div>
 
  </div>

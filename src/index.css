@@ -1,8 +1,15 @@
 body {
   background-color:white;
- 
     margin: 0;
   
+}
+
+.list-page-wrapper{
+width: 60%;
+transform: translateX(33%);
+justify-self: stretch;
+
+
 }
 .temp{
 color: black;
@@ -75,8 +82,12 @@ html {
 .list-elements{
   padding-left: 4px;
   padding-right: 4px;
-  color:gray;
+  color:black;
   }
+  
+.altcolor{
+  color:gray;
+}
   
 
 
@@ -101,5 +112,6 @@ html {
   overflow: hidden;
   background: white;
   color:black;
+  border: black 1px solid;
 }
 

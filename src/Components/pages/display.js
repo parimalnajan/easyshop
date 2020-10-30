@@ -41,10 +41,13 @@ import './auth.css';
                     setd({b:profile.displayName,c:profile.email,d:profile.photoURL,a:profile.providerId});
                                   
                   console.log(details);
+              
                })
       
         
         } else { console.log('nousertemp');
+        setd({b:"Username here",c:"dummy@demomail.com",d:"https://via.placeholder.com/150C/"})
+            setLoading(false);
           // No user is signed in.
         }
       });
@@ -70,7 +73,7 @@ import './auth.css';
     },[])
         
     let copy2=()=>{
-      let str="parimal.najan@gmail.com"
+      
        
       navigator.clipboard.writeText(details.c).then(function() {
         console.log("success");
@@ -81,64 +84,23 @@ import './auth.css';
      
       }
     
-  return (<div className='maindisplay'>  {loading? <div>....loading</div>:<div className='profilecard' >
+  return (<div className='maindisplay'>  {loading? <div>....loading.  Please Login</div>:
+            <div className='profilecard'>
 
-               <div className='upper'>  <div className='ppcontainer'><img className='pp'src={details.d}></img></div> </div>
-              
-               <div className='lower'>
-                            
-                
-              
-               <p className='p-name'>{details.b}</p>
-                <p>{ui.quote}</p>
-                             
-               
-                <div className='icons'>
-                  <a href="https://www.linkedin.com/in/parimal-najan-521008169/" target="_blank"><Icon.Linkedin /></a>
-               
-                  <a href="https://github.com/parimalnajan" target="_blank"><Icon.GitHub color="black"/></a>
-                  <a><Icon.Mail color="red" onClick={copy2}/></a>
-                  </div>
-                  
-                  </div></div>
-        
-}
-    
-    </div>
+                <div className='upper'>  <div className='ppcontainer'><img className='pp'src={details.d}></img></div> </div>   
+                          
+                <div className='lower'>                              
+                        <p className='p-name'>{details.b}</p>
+                        <p>{ui.quote}</p>                            
+                        <div className='icons'>
+                            <a href="https://www.linkedin.com/in/parimal-najan-521008169/" target="_blank"><Icon.Linkedin /></a>                  
+                            <a href="https://github.com/parimalnajan" target="_blank"><Icon.GitHub color="black"/></a>
+                            <a><Icon.Mail color="red" onClick={copy2}/></a>
+                         </div>
+                   </div>
+               </div>
+        }</div>
 )
 }
 export default Display;
 
-/*<h1>
-{props.age}</h1>  <div className='temp'> <button onClick={console.log('xd')}>show</button>
-<h2>{props.name}</h2>
-<p>{props.quote}</p>
- <p>{name}, Age: {age}</p>
- 
- 
- 
-  /*ref.once('value').then(function(snapshot){
-    let abc=snapshot.val() && snapshot.val().abc;
-   });
-
-   console.log(abc);
-   
-   let gotData=(data)=>{
-   let dataRecieve= data.val();
-     console.log(dataRecieve);
-   let  nameRecieve= dataRecieve.name;
-     console.log('a: '+nameRecieve);   
-    }
-    
-    
-      async function showdata(){
-    
-    await ref.once('value').then(snapshot =>{ 
-       let  name= await (snapshot.val())
-    
-    setUI(name);
-    console.log(ui); 
-  
- });
- }  
- showdata(); */

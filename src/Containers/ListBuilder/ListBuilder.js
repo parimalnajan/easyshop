@@ -5,6 +5,8 @@ import InputBox from "../../Components/Layout/InputBox";
 
 import firebase, { database } from 'firebase';
 const ListBuilder =()=>{ 
+
+
        let name={};
        let [ui,setUi]=useState('');
 
@@ -15,15 +17,13 @@ const ListBuilder =()=>{
        let listref=firebase.database().ref("Users/"+uid+"/List");   
  
        var user = firebase.auth().currentUser;  
+
        useEffect(()=>{    
               firebase.auth().onAuthStateChanged(function(user) {
-              if (isdisabled===true) {
-                     setUser(user.uid);    
-                    
-                     
-                
-               
-            
+                 
+               if (isdisabled===true) {
+                     setUser(user.uid);                                                             
+                           
                let listref=firebase.database().ref("Users/"+user.uid+"/List");  
                listref.once('value')
                .then( snapshot =>{
@@ -35,31 +35,18 @@ const ListBuilder =()=>{
                             setlistx( (prevlistx) =>{
                                    return prevlistx.concat(item.val());    }); 
                                  setLoading(false);
-                                 setDisabled(false);
-        
+                                 setDisabled(false);       
                      
                })
-               })
-
-              
+               })              
                      
-              } else { console.log('nouserfound temp')
-
-
-                // No user is signed in.
+              } else { console.log('nouserfound temp')                
+                      // No user is signed in.
               }});            
               },[])
 
       
-      // let testitem={id:'12',item:"22 item",flavor:"22",qty:'5'};
-      
-       useEffect(()=>{
-              
-      
-      },[])
-let setDisabledcall= ()=>{
-       
-}    
+  
 let fbfucntion =()=>{    
        setDisabled(true);
        let listref=firebase.database().ref("Users/"+uid+"/List");  
@@ -75,9 +62,11 @@ let fbfucntion =()=>{
              
        })
        })
- //listref.once('value').then(snapshot =>{        snapshot.forEach(element => {console.log(element.val())             });})
+ //listref.once('value').then(snapshot =>{ snapshot.forEach(element => {console.log(element.val())     });})
 
 }
+
+
  let fbadd=(itemrecieve)=>{
         let thisid = itemrecieve.id;
         let listref=firebase.database().ref("Users/"+uid+"/List");
@@ -115,8 +104,8 @@ let deleteItem =(id2) =>{
  let editItem = (id2) =>{
         let newarr = [...listx];
         let recid = id2.id;
-               //  a=editedItem.name;                 b=editedItem.flavor;                 c=editedItem.qty;
-               for(let i =0; i<newarr.length;i++){
+             
+          for(let i =0; i<newarr.length;i++){
                 if(newarr[i].id===recid){
                        console.log("editingid :", recid);
                        console.log(newarr[i]);
@@ -124,16 +113,11 @@ let deleteItem =(id2) =>{
                        //newarr[i].flavor='edit';
                      //  newarr[i].qty='edit'; 
                        setlistx(newarr);                       
-                }
-                
-               // newarr[recivid]=id2;
-                //setlistx(newarr)
-}}
-
+                }               
+              
+              }
+       }
  
-
-
-
 useEffect(()=>{
     
         console.log(listx);
@@ -142,34 +126,43 @@ useEffect(()=>{
 
     
 
-return(
-<div> <InputBox additem={addItemBot} listx={listx} additemfb={fbadd} />
-              {loading? <div>....loading</div>:<> 
-              {                              
-               listx.map((itemx,index) =>(
-                <ListItem 
-                key={index}
-                id={itemx.id} 
-                asd={index+1}
 
-                itemname={itemx.item}
-                itemflavor={itemx.flavor}
-                itemqty={itemx.qty}
-               
-                deleteItem={deleteItem}  
-                editItem={editItem}     
-                                   
-                >
+
+
+
+return(
+       <div className="list-page-wrapper"> <InputBox additem={addItemBot} listx={listx} additemfb={fbadd} />
+                     {loading? <div>....loading</div>:
+                     <>{                              
+                     listx.map((itemx,index) =>(
+                     <ListItem 
+                     key={index}
+                     id={itemx.id} 
+                     asd={index+1}
+
+                     itemname={itemx.item}
+                     itemflavor={itemx.flavor}
+                     itemqty={itemx.qty}
                      
-                </ListItem>  ))
-                
-               }       </>}                  
- 
-    </div>       
-        );    
+                     deleteItem={deleteItem}  
+                     editItem={editItem}                
+                     ></ListItem>  ))
+                     
+                     }</>
+                     }                
+       </div>       
+);    
+
+
 }
 
+
+
 export default ListBuilder;
+
+
+
+
 
 
 /* 
