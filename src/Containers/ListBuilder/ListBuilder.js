@@ -88,69 +88,71 @@ let addItemBot =(itemrecieve)=>{
 
  
                  
-let deleteItem =(id2) =>{
-        setlistx((listx) =>{            
-                
-        let abc=  listx.filter(x => x.id!==id2);  
-         return abc;   
-       //return listx.splice(id2,1);    
-        });          
-        let listref=firebase.database().ref("Users/"+uid+"/List");
-       listref.child(id2).remove();
-        console.log("delete called on"); console.log(id2);
-        console.log(listx);
- }
+let deleteItem = (id2) => {
+  setlistx((listx) => {
+    let abc = listx.filter((x) => x.id !== id2);
+    return abc;
+    //return listx.splice(id2,1);
+  });
+  let listref = firebase.database().ref("Users/" + uid + "/List");
+  listref.child(id2).remove();
+  console.log("delete called on");
+  console.log(id2);
+  console.log(listx);
+};
 
- let editItem = (id2) =>{
-        let newarr = [...listx];
-        let recid = id2.id;
-             
-          for(let i =0; i<newarr.length;i++){
-                if(newarr[i].id===recid){
-                       console.log("editingid :", recid);
-                       console.log(newarr[i]);
-                       newarr[i]=id2;
-                       //newarr[i].flavor='edit';
-                     //  newarr[i].qty='edit'; 
-                       setlistx(newarr);                       
-                }               
-              
-              }
-       }
+ let editItem = (id2) => {
+   let newarr = [...listx];
+   let recid = id2.id;
+
+   for (let i = 0; i < newarr.length; i++) {
+     if (newarr[i].id === recid) {
+       console.log("editingid :", recid);
+       console.log(newarr[i]);
+       newarr[i] = id2;
+       //newarr[i].flavor='edit';
+       //  newarr[i].qty='edit';
+       setlistx(newarr);
+     }
+   }
+ };
  
-useEffect(()=>{
+
+useEffect(() => {
+
+  console.log(listx);
+
+}, [listx]);
+
     
-        console.log(listx);
-
-},[listx])
-
-    
 
 
 
 
 
-return(
-       <div className="list-page-wrapper"> <InputBox additem={addItemBot} listx={listx} additemfb={fbadd} />
-                     {loading? <div>....loading</div>:
-                     <>{                              
-                     listx.map((itemx,index) =>(
-                     <ListItem 
-                     key={index}
-                     id={itemx.id} 
-                     asd={index+1}
-
-                     itemname={itemx.item}
-                     itemflavor={itemx.flavor}
-                     itemqty={itemx.qty}
-                     
-                     deleteItem={deleteItem}  
-                     editItem={editItem}                
-                     ></ListItem>  ))
-                     
-                     }</>
-                     }                
-       </div>       
+return (
+  <div className="list-page-wrapper">
+    {" "}
+    <InputBox additem={addItemBot} listx={listx} additemfb={fbadd} />
+    {loading ? (
+      <div>....loading</div>
+    ) : (
+      <>
+        {listx.map((itemx, index) => (
+          <ListItem
+            key={index}
+            id={itemx.id}
+            asd={index + 1}
+            itemname={itemx.item}
+            itemflavor={itemx.flavor}
+            itemqty={itemx.qty}
+            deleteItem={deleteItem}
+            editItem={editItem}
+          ></ListItem>
+        ))}
+      </>
+    )}
+  </div>
 );    
 
 

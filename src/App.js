@@ -29,7 +29,7 @@ let App=() =>{
         
         </Switch>
      
-    </div>
+    </div> 
 
     ): <div>Loading....</div>;
   
@@ -37,16 +37,3 @@ let App=() =>{
 
 export default App;
 
- /*
- 
- <Card className="input-wrapper">
- <div className="input-elements">Enter item: </div>
- <input className="input-elements" type="text" value="item" />
- <input className="input-elements" type="text"value="flavor" /> 
- <input className="input-elements" type="text"value="quantity" />
-
- <button className="input-elements">Add</button>
-</Card>
-
-*/
-      

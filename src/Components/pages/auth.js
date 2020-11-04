@@ -32,6 +32,7 @@ const Layout = (props) => {
   var provider = new firebase.auth.GoogleAuthProvider();
 
   const signin= () =>{    
+    
     firebase.auth().signInWithPopup(provider).then(function(result) {
       if (result.credential) {
         // This gives you a Google Access Token. You can use it to access the Google API.
@@ -96,9 +97,9 @@ const smth=()=>{
 
     <button className='b-btn' onClick={setdemo}>Test</button>     
 
-    <Googlebutton onClick={signin}/> 
+   < div onClick={signin}><Googlebutton></Googlebutton></div> 
     
-    <button className='b-btn' onClick={signin}>  Sign Out</button>
+    <button className='b-btn' >  Sign Out</button>
 
 </div>
   );
