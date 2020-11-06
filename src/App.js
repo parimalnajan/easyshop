@@ -6,18 +6,46 @@ import Navigation from '../src/constants/navigation';
 import * as ROUTES from '../src/constants/routes';
 import MainNavigation from './Components/Layout/MainNav';
 import Display from './Components/pages/display';
-import './App.css';
-import './index.css';
 import Auth from './Components/pages/auth';
 import firebase from 'firebase';
+import { connect } from 'react-redux';
+import store from './store';
 //import InputBox from './Components/Layout/InputBox';
+import * as userReducer from './actions/userActions'
+
+import './App.css';
+import './index.css';
 
 
-let App=() =>{
+connect((store)=>{
+  return{
+   }
+
+})
+let App=(props) =>{
   
   let firebaseinit=true;
+  let [reduxState,setReduxState]=useState('wait for it');
+  let [reduxState2,setReduxState2]=useState('wait for iiiit');
+
+
+  const reduxe=()=>{
+    let disp={};
+    disp=userReducer.demo();
+store.dispatch(disp);
+
+let tempstate=store.getState();
+setReduxState(tempstate.user.testmsg);
+setReduxState2(tempstate.list.testmsg2);
+console.log(tempstate);
+  }
+
   return firebaseinit!==false? (
     <div><MainNavigation/>
+    <button onClick={reduxe}>Redux!</button>
+    <div>{reduxState}</div>
+    <div>{reduxState2}</div>
+    <div>{props.userid}</div>
      
         <Switch>
           <Route path exact = "/" component={Auth}/>

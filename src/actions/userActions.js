@@ -10,7 +10,14 @@ export function fetchUser(){
 
 export function setUserName(name){
     return{
-        type:"SET_USERNAME",
+        type:"SET_USERID",
         payload:name,
+    }
+}
+
+export function demo(){
+    return{
+        type:"TEST",
+        payload:"Hello, this is redux!",
     }
 }

@@ -1,9 +1,9 @@
 export default function reducer(state={
-    size:0
+    
 
 },action){
-if(action.type==='INC'){
-    return{...state, size:++state.size}
+if(action.type==='TEST'){
+    return{...state, testmsg2:"im a secondary reducer!"}
 }
 return state;
 }
