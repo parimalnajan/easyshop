@@ -17,44 +17,41 @@ import './App.css';
 import './index.css';
 
 
-connect((store)=>{
+/*connect((store)=>{
   return{
    }
 
-})
-let App=(props) =>{
+})*/
+
+let App=() =>{
   
   let firebaseinit=true;
   let [reduxState,setReduxState]=useState('wait for it');
   let [reduxState2,setReduxState2]=useState('wait for iiiit');
+  let tempstate=store.getState();
 
+  const fireRedux=()=>{
+    let demodispatch={};
+   // demodipatch=userReducer.demo();
+    store.dispatch(userReducer.demo());
 
-  const reduxe=()=>{
-    let disp={};
-    disp=userReducer.demo();
-store.dispatch(disp);
-
-let tempstate=store.getState();
-setReduxState(tempstate.user.testmsg);
-setReduxState2(tempstate.list.testmsg2);
-console.log(tempstate);
+    tempstate=store.getState();
+    setReduxState(tempstate.user.testmsg);
+    setReduxState2(tempstate.list.testmsg2);
+    console.log(tempstate);
   }
 
+
   return firebaseinit!==false? (
+
     <div><MainNavigation/>
-    <button onClick={reduxe}>Redux!</button>
-    <div>{reduxState}</div>
-    <div>{reduxState2}</div>
-    <div>{props.userid}</div>
+    
      
         <Switch>
           <Route path exact = "/" component={Auth}/>
           <Route path = "/auth" component={Auth} />
           <Route path = "/account"><Display/></Route>
-          <Route path ="/list"><ListBuilder/></Route>
-          
-        
-        
+          <Route path ="/list"><ListBuilder/></Route>                    
         </Switch>
      
     </div> 

@@ -2,69 +2,52 @@ import React, { useState, useEffect } from "react";
 
 import ListItem from "./ListItem";
 import InputBox from "../../Components/Layout/InputBox";
+import store from "../../store"
 
 import firebase, { database } from 'firebase';
 const ListBuilder =()=>{ 
 
+       let name = {};
+       let [loadingtxt, setLoadingtxt] = useState("Loading Data..");
 
-       let name={};
-       let [ui,setUi]=useState('');
+       const [listx, setlistx] = useState([]);      
+       let [loading, setLoading] = useState(true);
+       let [uid, setUser] = useState("");
 
-       const  [listx,setlistx] =  useState([]);
-       let [isdisabled,setDisabled]=useState(true);
-       let [loading,setLoading]=useState(true);
-       let [uid,setUser]=useState('');
-       let listref=firebase.database().ref("Users/"+uid+"/List");   
- 
-       var user = firebase.auth().currentUser;  
-
-       useEffect(()=>{    
-              firebase.auth().onAuthStateChanged(function(user) {
-                 
-               if (isdisabled===true) {
-                     setUser(user.uid);                                                             
-                           
-               let listref=firebase.database().ref("Users/"+user.uid+"/List");  
-               listref.once('value')
-               .then( snapshot =>{
-                      snapshot.forEach( item=>{       
-                              name = (item.val())
-                              console.log(name)
-                             //setlistx(listx.push(item.val()))
-                             let templist=[...listx];
-                            setlistx( (prevlistx) =>{
-                                   return prevlistx.concat(item.val());    }); 
-                                 setLoading(false);
-                                 setDisabled(false);       
-                     
-               })
-               })              
-                     
-              } else { console.log('nouserfound temp')                
-                      // No user is signed in.
-              }});            
-              },[])
-
+       let listref = firebase.database().ref("Users/" + uid + "/List");
       
+ 
+       useEffect(() => {
+         firebase.auth().onAuthStateChanged(function (user) {
+         
+           if (user) {
+             setUser(user.uid);
+
+             let listref = firebase
+               .database()
+               .ref("Users/" + user.uid + "/List");     //cant use state for some reason
+             listref.once("value").then((snapshot) => {
+               snapshot.forEach((item) => {
+                 name = item.val();
+                 console.log(name);
+                 //setlistx(listx.push(item.val()));     let templist = [...listx];
+                 setlistx((prevlistx) => {
+                   return prevlistx.concat(item.val());
+                 });
+                 console.log(listx)
+                 if(listx===null){setLoadingtxt("EmptyList");}
+                 else{                
+                 setLoading(false);}
+                 
+               });
+             });
+           } else {
+             console.log("nouserfound temp");
+             // No user is signed in.
+           }
+         });
+       }, []); 
   
-let fbfucntion =()=>{    
-       setDisabled(true);
-       let listref=firebase.database().ref("Users/"+uid+"/List");  
-       listref.once('value')
-       .then(snapshot =>{
-              snapshot.forEach(item=>{       
-                     console.log(item.val())
-                     //setlistx(listx.push(item.val()))
-                     let templist=[...listx];
-                     setlistx((prevlistx) =>{
-                     return prevlistx.concat(item.val());    }); 
-
-             
-       })
-       })
- //listref.once('value').then(snapshot =>{ snapshot.forEach(element => {console.log(element.val())     });})
-
-}
 
 
  let fbadd=(itemrecieve)=>{
@@ -74,6 +57,9 @@ let fbfucntion =()=>{
               flavor:itemrecieve.flavor,
               qty:itemrecieve.qty,
               id:itemrecieve.id});
+              
+              if(setLoading!==false)setLoading(false);
+              //implement firebase id return into array as alternate ID assignment
  }
 
 
@@ -125,17 +111,17 @@ useEffect(() => {
 }, [listx]);
 
     
-
+let temp = store.getState()
 
 
 
 
 return (
   <div className="list-page-wrapper">
-    {" "}
+  
     <InputBox additem={addItemBot} listx={listx} additemfb={fbadd} />
     {loading ? (
-      <div>....loading</div>
+      <div>{loadingtxt}</div>
     ) : (
       <>
         {listx.map((itemx, index) => (

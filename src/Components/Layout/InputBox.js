@@ -57,7 +57,7 @@ let idgen = () => {
     if (props.listx[i].id === genid) {
       console.log("duplicate genereate, regen");
       return idgen();
-    } else if (props.listx.length === 10) {
+    } else if (props.listx.length === 100) {
       alert("exceeded coded id limit");
       return;
     }
@@ -120,7 +120,7 @@ let [textcol3,setCol3]=useState("altcolor");
  </div></div>
  
  <div className="list-subitem">
- <PlusSquareOutlined className="list-elements"  onClick={addItemLocal} style={{fontSize:"1.5rem",alignSelf:'center'}} ></PlusSquareOutlined>
+ <PlusSquareOutlined className="list-elements"  onClick={addItemLocal} style={{fontSize:"1.5rem",alignSelf:'center',fontWeight:"  "}} ></PlusSquareOutlined>
  </div>
 
  </div>
