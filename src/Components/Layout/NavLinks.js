@@ -11,8 +11,8 @@ const NavLinks = props => {
             <li><NavLink to ="/list">ItemsList</NavLink></li>
            {//} <li><NavLink to = "/order">OrderStatus</NavLink></li>
 }
-            <li><NavLink to = "/account">MyAccount</NavLink></li>
-            <li><NavLink to = "/" exact >AUTH</NavLink></li>
+            <li><NavLink to = "/account">Register</NavLink></li>
+            <li><NavLink to = "/" exact >Login</NavLink></li>
         
 
         </ul>

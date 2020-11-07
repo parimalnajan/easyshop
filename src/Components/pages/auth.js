@@ -1,28 +1,17 @@
 import React ,{useState, useEffect} from 'react';
-import {crateStore} from 'redux';
-import ListBuilder from '../../Containers/ListBuilder/ListBuilder';
-import MainNavigation from '../../Components/Layout/MainNav';
-import  { userRef, firebaseapp } from '../../firebase';
+
 import * as firebase from 'firebase';
-
-import Display from './display';
-import Card from '../../Containers/ListBuilder/Card';
+import  { userRef, firebaseapp } from '../../firebase';
 import Googlebutton from '../Layout/Googlebutton';
-import ReactDOM from 'react-dom';
-//import route from 'can-route';
-//import DefineMap from 'can-define/map/map';
-
- 
-//import AuthContainer from '/auth-container/auth-container';
-//import Tabs from 'auth-component/tabs/can-route';
-//import SignupForm from 'auth-component/forms/signup/';
-//import LoginForm from 'auth-component/forms/login/';
-//import SVGInline from 'auth-component/';
 
 
-import {BrowserRouter as Router, Route,Switch, Redirect} from 'react-router-dom';
+
+
 import "./auth.css";
 import '../../../node_modules/antd/dist/antd.css';
+import Login from './login';
+import Register from './register';
+
 
 const Layout = (props) => {
   let[au,Setau]= useState('');
@@ -93,15 +82,9 @@ const smth=()=>{
 
 
 
-  return(<div className='logincard'>
-
-    <button className='b-btn' onClick={setdemo}>Test</button>     
-
-   < div onClick={signin}><Googlebutton></Googlebutton></div> 
-    
-    <button className='b-btn' >  Sign Out</button>
-
-</div>
+  return(
+ 
+   <Login></Login>
   );
 
 
@@ -109,3 +92,13 @@ const smth=()=>{
 }
 
 export default Layout;
+
+// <div className='logincard'>
+
+// <button className='b-btn' onClick={setdemo}>Test</button>     
+
+// < div onClick={signin}><Googlebutton></Googlebutton></div> 
+
+// <button className='b-btn' >  Sign Out</button>
+
+// </div>
