@@ -19,9 +19,10 @@ let Login=()=>{
             <input className="input2" placeholder = "Password"></input>
             
             <div className="checkbox-wrapper">
-            <div className="checkbox-wrapper-2"><input type="checkbox" id="check" ></input>
-                <div className="remberme">Remember me</div></div>
-                <div className="resetpass"><a>Reset Password?</a></div> 
+                <div className="checkbox-wrapper-2"><input type="checkbox" id="check" ></input>
+                    <div className="remberme">Remember me</div>
+                </div>
+                     <div className="resetpass"><a>Reset Password?</a></div> 
             </div>
 
             <button>Sign In</button>
