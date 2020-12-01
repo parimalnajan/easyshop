@@ -104,23 +104,20 @@ let [textcol3,setCol3]=useState("altcolor");
 
 
     return(
-<div className="input-wrap">
+<div className="inputbox-wrap">
  <Card>
-     <div  className="list-item">
+     <div className="listbox-item">
 
- <div className="list-subitem">
-    <div className="list-index">Enter item: </div>
-    <div className="name-top-handler">
-         <div className="list-name-wrapper">
-           <input className={textcol1} onClick= {setnull1} onChange={textChangeBot1} value ={itemText}></input>
-         </div>
-            
- <input className={textcol2}onClick= {setnull2} onChange={textChangeBot2} value ={flavorText}></input>
- <input className={textcol3}onClick= {setnull3} onChange={textChangeBot3} value ={qtyText}></input>
- </div></div>
  
- <div className="list-subitem">
- <PlusSquareOutlined className="list-elements"  onClick={addItemLocal} style={{fontSize:"1.5rem",alignSelf:'center',fontWeight:"  "}} ></PlusSquareOutlined>
+    <div className="listbox-title">Please enter the details of required item </div>
+          <div className="listbox-inputs">
+           <input className={textcol1} onClick= {setnull1} onChange={textChangeBot1} value ={itemText}></input>
+            <input className={textcol2}onClick= {setnull2} onChange={textChangeBot2} value ={flavorText}></input> 
+            <input className={textcol3}onClick= {setnull3} onChange={textChangeBot3} value ={qtyText}></input>
+            </div>
+ 
+ <div  className="listbox-button"onClick={addItemLocal}> Add to list    
+
  </div>
 
  </div>

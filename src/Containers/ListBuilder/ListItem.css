@@ -1,0 +1,61 @@
+.input-wrap{
+    padding-top:3rem;
+}
+
+
+.list-item{
+  display:flex;
+  flex-direction: row;
+  justify-content:space-between;
+  
+ }
+ .list-subitem{
+  display:flex;
+   flex-direction: row;
+   justify-content: center;
+  
+}
+.name-top-handler{
+  display: flex;
+  flex-direction: column;
+  }
+
+.list-index{
+  padding: 0px 10px 0 0;
+  align-self: center;
+}
+.list-elements{
+  padding-left: 4px;
+  padding-right: 4px;
+  color:black;
+  }
+  
+.altcolor{
+  color:gray;
+}
+  
+
+
+
+.input-elements{
+  padding:5px;
+  margin: 1px;
+}
+.input-wrapper{
+    
+  display:flex;
+  flex-direction: column;
+   align-content: center;
+     
+}
+.card {
+  position: relative;
+  margin: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  border-radius: 6px;
+  padding: 1rem;
+  overflow: hidden;
+  background: white;
+  color:black;
+  border: black 1px solid;
+}

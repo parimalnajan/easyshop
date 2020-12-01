@@ -1,6 +1,7 @@
 import React , { useState } from "react";
 import Card from "./Card";
 import { DeleteOutlined,EditOutlined,CheckSquareOutlined,CloseSquareOutlined} from'@ant-design/icons';
+import './ListItem.css';
 
 
 const ListItem = (props) => {

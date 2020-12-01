@@ -1,41 +1,31 @@
-.inputbox-wrap{
+.input-wrap{
     padding-top:3rem;
 }
 
-.listbox-button{
-    border: solid 2px #0070ff;
-    padding: 8px 16px 8px 16px;
-    border-radius: 8px;
-    font-size: 13px;
-    
-}
-.listbox-button:hover{
-    cursor: pointer;
-    
-}
-.listbox-item{
+
+.list-item{
     display:flex;
     flex-direction: column;
     align-items: center;
     
    }
    
-   .listbox-title{
+   .list-title{
        font-size: 20px;
    }
   
-  .listbox-inputs{
+  .list-inputs{
     display:flex;
     flex-direction: column;
     justify-content: center;
     margin: 18px;
   }
 
-  .listbox-inputs input{
+  .list-inputs input{
   margin: 4px;
   }
  
-  .listbox-elements{
+  .list-elements{
     padding-left: 4px;
     padding-right: 4px;
     color:black;
@@ -48,7 +38,7 @@
   
   
   
-  .inputbox-elements{
+  .input-elements{
     padding:5px;
     margin: 1px;
   }
