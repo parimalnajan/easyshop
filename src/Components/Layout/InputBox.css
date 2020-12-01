@@ -29,10 +29,15 @@
     flex-direction: column;
     justify-content: center;
     margin: 18px;
+    
   }
 
   .listbox-inputs input{
   margin: 4px;
+  padding: 8px;
+      
+      border: 2px solid silver;
+      width: 30vw;
   }
  
   .listbox-elements{
@@ -70,8 +75,5 @@
 
 
   input{
-      padding: 8px;
       
-      border: 2px solid silver;
-      width: 30vw;
   }
