@@ -104,7 +104,7 @@ let [textcol3,setCol3]=useState("altcolor");
 
 
     return(
-
+<div className="input-wrap">
  <Card>
      <div  className="list-item">
 
@@ -124,7 +124,7 @@ let [textcol3,setCol3]=useState("altcolor");
  </div>
 
  </div>
-</Card>
+</Card></div>
 
     );
 }

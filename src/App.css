@@ -1,0 +1,11 @@
+.app-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+
+
+}
+.list-page-wrapper{
+width: 80%;
+margin-left:10%;
+}

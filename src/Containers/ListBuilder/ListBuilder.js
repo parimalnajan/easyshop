@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 
 import ListItem from "./ListItem";
 import InputBox from "../../Components/Layout/InputBox";
-import store from "../../store"
+import store from "../../store";
+import '../../App.css';
 
 import firebase, { database } from 'firebase';
 const ListBuilder =()=>{ 

@@ -8,16 +8,16 @@ export function fetchUser(){
 }
 
 
-export function setUserName(name){
+export function demo(name){
     return{
         type:"SET_USERID",
         payload:name,
     }
 }
 
-export function demo(){
+export function prodcutsave(data){
     return{
-        type:"TEST",
-        payload:"Hello, this is redux!",
+        type:"fetch",
+        payload:data,
     }
 }

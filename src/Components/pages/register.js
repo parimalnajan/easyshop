@@ -10,7 +10,7 @@ let Register=()=>{
 
         <div className="reg-form-wrapper">
             <div className="login">Register</div>
-            <div className="login2">Manage all your lottery efficiently</div>
+            <div className="login2">Manage your shopping efficiently</div>
             <div className="text">Let's get you setup so we can verify your personal account and begin creating your profile.</div>
             
            <div className="twin-wrapper"> 
@@ -60,7 +60,7 @@ let Register=()=>{
            
             <button className="btn">Create Account</button>
 
-            <div className="login2">Have an account ?<a>Log in</a></div>
+            <div className="login2">Have an account ?<a>  Log in</a></div>
             
         </div>
 

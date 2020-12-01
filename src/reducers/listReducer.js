@@ -2,8 +2,8 @@ export default function reducer(state={
     
 
 },action){
-if(action.type==='TEST'){
-    return{...state, testmsg2:"im a secondary reducer!"}
+if(action.type==="fetch"){
+    return{...state,list:action.payload}
 }
 return state;
 }

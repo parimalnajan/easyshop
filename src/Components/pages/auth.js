@@ -4,9 +4,6 @@ import * as firebase from 'firebase';
 import  { userRef, firebaseapp } from '../../firebase';
 import Googlebutton from '../Layout/Googlebutton';
 
-
-
-
 import "./auth.css";
 import '../../../node_modules/antd/dist/antd.css';
 import Login from './login';
@@ -76,13 +73,7 @@ const smth=()=>{
 
     
 }
-
-
-
-
-
-
-  return(
+ return(
  
    <Login></Login>
   );

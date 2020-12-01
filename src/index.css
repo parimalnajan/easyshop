@@ -1,13 +1,8 @@
-body {
-  background-color:white;
-    margin: 0;
-  
+body{
+  color:gray;
 }
-
-.list-page-wrapper{
-
-
-
+div{
+  color:black;
 }
 .temp{
 color: black;

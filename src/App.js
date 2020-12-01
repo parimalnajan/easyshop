@@ -7,15 +7,17 @@ import * as ROUTES from '../src/constants/routes';
 import MainNavigation from './Components/Layout/MainNav';
 import Display from './Components/pages/display';
 import Auth from './Components/pages/auth';
-
+import Cart from './Components/pages/cart';
 import { connect } from 'react-redux';
 import store from './store';
 //import InputBox from './Components/Layout/InputBox';
 import * as userReducer from './actions/userActions'
+import Register from './Components/pages/register';
+import Products from './Components/pages/products';
+
 
 import './App.css';
 import './index.css';
-import Register from './Components/pages/register';
 
 
 /*connect((store)=>{
@@ -45,14 +47,16 @@ let App=() =>{
 
   return firebaseinit!==false? (
 
-    <div><MainNavigation/>
+    <div className="app-wrapper"><MainNavigation/>
     
      
         <Switch>
           <Route path exact = "/" component={Auth}/>
           <Route path = "/auth" component={Auth} />
           <Route path = "/account"><Register/></Route>
-          <Route path ="/list"><ListBuilder/></Route>                    
+          <Route path ="/list"><ListBuilder/></Route>
+          <Route path= "/cart" component={Cart}/>
+          <Route path= "/products" component={Products}/>
         </Switch>
      
     </div> 
