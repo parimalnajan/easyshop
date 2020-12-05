@@ -15,18 +15,13 @@ useEffect(()=>{
       
 },[]);
 
-console.log(products[0]);
-for (let i =0;i<products.length;i++){
 
-    let product=products[i];
-   
+let addCart = (id) =>{
+    console.log(products[id]);
+props.addCall(products[id]);
 }
 
-let obj={};
-    const product=(obj)=>{return <div>
-        {obj.a}{obj.b}{obj.c}
-    </div>}
-    
+
 
     return ( 
         <div className="product-page-wrap">
@@ -42,8 +37,10 @@ let obj={};
                 <div className="product-price">${item.price}</div>
                 </div>
                 <div className="btn-wrap">
-                    <button className="buy-btn" onClick={()=>console.log(products)}>Buy Now</button>
-                    <button className="cart-btn">Add to cart</button>
+                    <button className="buy-btn" onClick={()=>console.log(item.id)}>Buy Now</button>
+                    <button className="cart-btn" onClick={()=>
+                        addCart(item.id-1)
+                    }>Add to cart</button>
                 </div>
  
              </div>            

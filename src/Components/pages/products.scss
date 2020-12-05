@@ -96,6 +96,9 @@ justify-content:space-between;
     border:1px solid grey;
    
 }
+.buy-btn:hover{
+    cursor: pointer;
+}
 
 .cart-btn{
     padding: $q $e $q $e;    
@@ -103,6 +106,9 @@ justify-content:space-between;
     font-size:13px;
     font-weight: 600;
     border:1px solid grey;
+}
+.cart-btn:hover{
+    cursor: pointer;
 }
 
 

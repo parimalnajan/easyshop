@@ -109,6 +109,15 @@ div hr {
    font-weight: 600;
 }
 
+
+.cart-qty span{
+   font-size: 14px;
+   padding: 2px;
+   font-weight: 600;
+}
+.cart-qty span:hover{
+cursor: pointer;
+}
 .amounts {
    display: flex;
    flex-direction: row;

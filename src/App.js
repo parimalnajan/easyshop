@@ -45,18 +45,34 @@ let App=() =>{
   }
 
 
+
+let [tempcart,setCart]=useState([]);
+
+let addToCart= (cartArr)=>{
+  console.log(cartArr);
+  setCart((prevCart)=>{
+    let temp=prevCart.concat(cartArr);
+    return temp;
+  });
+  console.log(tempcart);
+
+}
+
+let clear=()=>{
+  setCart([]);
+}
+
   return firebaseinit!==false? (
 
-    <div className="app-wrapper"><MainNavigation/>
-    
+    <div className="app-wrapper"><MainNavigation/>   
      
         <Switch>
-          <Route path exact = "/" component={Auth}/>
+          <Route path exact = "/" component={Auth} />
           <Route path = "/auth" component={Auth} />
           <Route path = "/account"><Register/></Route>
           <Route path ="/list"><ListBuilder/></Route>
-          <Route path= "/cart" component={Cart}/>
-          <Route path= "/products" component={Products}/>
+          <Route path= "/cart"> <Cart sendcart={tempcart} clearcart={clear}/> </Route>
+          <Route path= "/products"><Products addCall={addToCart}/> </Route>
         </Switch>
      
     </div> 
