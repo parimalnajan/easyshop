@@ -11,7 +11,13 @@ const [products, setproducts] = useState([]);
 
 useEffect(()=>{
     axios.get('https://fakestoreapi.com/products?limit=10')
-    .then(res=>{const data=res.data; console.log(data);setproducts(data) });
+    .then(res=>{const data=res.data; console.log(data);setproducts(data) ;setproducts((prevCart)=>{
+        let temp=[...prevCart]
+        temp.forEach(function (element) {
+          element.qty = 1;
+        });
+        return temp;
+      });});
       
 },[]);
 

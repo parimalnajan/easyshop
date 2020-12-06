@@ -13,32 +13,23 @@ let Cart =(props)=>{
  useEffect(()=>{
     //axios.get('https://fakestoreapi.com/products?limit=2')
     //.then(res=>{const data=res.data; console.log(data);setcart(data) });
-    
-   let temp = props.sendcart;
-   console.log(temp);
    
+
+   let temp = props.sendcart;
+   console.log(temp);   
    setcart((olddata)=>{
-   let newdata= olddata.concat(temp);
-   newdata.forEach(function (element) {
-      element.qty = 0;
-    });
+   let newdata= olddata.concat(temp);   
       return newdata;
-      console.log(cart);         
+     // console.log(cart);         
    })
       
 },[]);
  
 
- let deleteFromCart=(id2)=>{
-   setcart((oldcart)=>{
-      let newcart=oldcart.filter((x) => x.id !== id2);
-      return newcart;
-   })
-       console.log("delete from cart success"); console.log(cart);
- }
+ 
 
 
- let cartTotal=()=>{
+ let cartTotal=(cart)=>{
    if(cart.length===0){ setTotalamt({amt:0,ship:0,total:0})}
    else{
    let temp=0;let qtysum=0;
@@ -47,35 +38,16 @@ let Cart =(props)=>{
        let unit=cart[i].price*cart[i].qty;
         temp=temp+unit;
       
-    }setTotalamt({amt:temp,ship:qtysum*5,total:temp+cart.length*5});
+    }setTotalamt({amt:temp,ship:qtysum*5,total:temp+qtysum*5});
  }}
  
  useEffect(()=>{
-   cartTotal();
- },[cart])
+   cartTotal(props.sendcart);
+ },[props.sendcart])
 
  
 
- 
- let qtyInc=(id)=>{
-   let tempcart=[...cart]
-   console.log(tempcart)
-   console.log(id);
-   tempcart[id].qty++;
-   setcart(tempcart);
-      console.log(tempcart[id].qty)
-      
-}
 
-let qtyDec=(id)=>{
-   let tempcart=[...cart]
-   console.log(tempcart)
-   console.log(id);
-   tempcart[id].qty--;
-   setcart(tempcart);
-      console.log(tempcart[id].qty)
-   
-}
 
 
     return (
@@ -83,22 +55,22 @@ let qtyDec=(id)=>{
         
           <div className="cart-list">  <div className="order-title">Order Summary  </div>
          
-             {cart.map((cart,index) => (
+             {props.sendcart.map((cart,index) => (
                 <div className="cart-item">
                     
                    <img className="cart-img" src={cart.image}></img>
                    <div className="cart-data">
                       <div className="cart-name">{cart.title}</div>
                       <div className="cart-price">${cart.price}</div>
-                      <div className="cart-qty">Quantity: <span onClick={()=>{qtyDec(index)}} className="dec"> - </span>{cart.qty}<span onClick={()=>{qtyInc(index)}} className="inc"> + </span></div>
+                      <div className="cart-qty">Quantity: <span onClick={()=>{props.qtyDec(index)}} className="dec"> - </span>{cart.qty}<span onClick={()=>{props.qtyInc(index)}} className="inc"> + </span></div>
                    </div>
                    <div className="cart-del">
-                      <DeleteOutlined onClick={()=>deleteFromCart(cart.id)} />
+                      <DeleteOutlined onClick={()=>props.deleteCartItem(cart.id)} />
                    </div>
                 </div>
              ))}
            <p> </p>
-          TODO: execute cart setState from parent component to avoid re-render after route swithch</div>
+          TODO: execute cart setState from parent component to avoid PRE-render after route switch</div>
          
           <div className="cart-payment">
             <div className="text"> Price Details</div> 

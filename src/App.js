@@ -45,23 +45,50 @@ let App=() =>{
   }
 
 
+let [tempcart, setCart] = useState([]); //Cart Array
 
-let [tempcart,setCart]=useState([]);
+let addToCart = (cartArr) => {
+   console.log(cartArr);
 
-let addToCart= (cartArr)=>{
-  console.log(cartArr);
-  setCart((prevCart)=>{
-    let temp=prevCart.concat(cartArr);
-    return temp;
+   setCart((prevCart) => {
+      let temp = prevCart.concat(cartArr);
+
+      return temp;
+   });
+
+   console.log(tempcart);
+};
+
+let deleteHandler=(id2)=>{
+  setCart((oldcart)=>{
+    console.log(id2);
+    let newcart=oldcart;
+      newcart=oldcart.filter((x) => x.id !== id2);
+     return newcart;
   });
-  console.log(tempcart);
-
+      console.log("delete from cart success"); console.log(tempcart);
 }
 
-let clear=()=>{
-  setCart([]);
+ 
+let qtyInc=(id)=>{
+  let temp=[...tempcart]
+  console.log(temp)
+  console.log(id);
+  temp[id].qty++;
+  setCart(temp);
+     console.log(tempcart[id].qty)
+     
 }
 
+let qtyDec=(id)=>{
+  let temp=[...tempcart]
+  console.log(temp)
+  console.log(id);
+  temp[id].qty--;
+  setCart(temp);
+     console.log(tempcart[id].qty)
+  
+}
   return firebaseinit!==false? (
 
     <div className="app-wrapper"><MainNavigation/>   
@@ -71,7 +98,7 @@ let clear=()=>{
           <Route path = "/auth" component={Auth} />
           <Route path = "/account"><Register/></Route>
           <Route path ="/list"><ListBuilder/></Route>
-          <Route path= "/cart"> <Cart sendcart={tempcart} clearcart={clear}/> </Route>
+          <Route path= "/cart"> <Cart sendcart={tempcart} deleteCartItem={deleteHandler} qtyDec={qtyDec} qtyInc={qtyInc}/> </Route>
           <Route path= "/products"><Products addCall={addToCart}/> </Route>
         </Switch>
      
