@@ -17,7 +17,7 @@ const Layout = (props) => {
  
   var provider = new firebase.auth.GoogleAuthProvider();
 
-  const signin= () =>{    
+   const signin= () =>   
     
     firebase.auth().signInWithPopup(provider).then(function(result) {
       if (result.credential) {
@@ -35,6 +35,7 @@ const Layout = (props) => {
       var email = error.email;
       // The firebase.auth.AuthCredential type that was used.
       var credential = error.credential;
+      console.log(error);
       // ...
     });
     
@@ -50,7 +51,7 @@ if (user != null||showstuff==true) {
   });
 }
 
-}
+
 
 let setdemo = ()=>{
 const demoid= 'EITKl1eRYtTxAzqe8C5JlpvrAEl1';
@@ -74,8 +75,8 @@ const smth=()=>{
     
 }
  return(
- 
-   <Login></Login>
+ <div></div>
+
   );
 
 

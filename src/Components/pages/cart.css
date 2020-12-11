@@ -186,6 +186,10 @@ cursor: pointer;
       height: auto;
    }
 
+   .cart-item{
+      padding: 4px 16px 4px 16px;
+   }
+
    .cart-payment {
       margin: 8px;
       background-color: white;

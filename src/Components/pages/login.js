@@ -1,8 +1,15 @@
 import React, {  useState, useEffect } from 'react';
+import firebase from 'firebase';
+import Googlebutton from '../Layout/Googlebutton';
+import * as Auth from '../pages/auth'
+import '../Layout/google.css';
+
 import './login.scss';
 
 
-let Login=()=>{
+let Login=(props)=>{
+    let[au,Setau]= useState('');
+    let[showstuff,setstuff]=useState(false); 
 
     return(
     <div className="login-wrapper">
@@ -25,9 +32,12 @@ let Login=()=>{
                      <div className="resetpass"><a>Reset Password?</a></div> 
             </div>
 
-            <button>Sign In</button>
+            <button style={{marginBottom:"4px"}}>Sign In</button>
+            <button onClick={props.demoAuth}>Demo</button>
 
-            <div className="login2">Don't Have an account yet? <a>Join EasyShop</a></div>
+            <div className="login2">Don't Have an account yet? <a>Join EasyShop</a> Or:</div>
+            <div id="google" onClick={props.googleAuth}><Googlebutton/><p></p></div>
+            
             
         </div>
 

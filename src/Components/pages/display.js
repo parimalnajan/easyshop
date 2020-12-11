@@ -1,6 +1,6 @@
 import React, { useEffect ,useState} from 'react';
 import firebase, { database } from 'firebase';
-import {AiFillGithub,AiFillLinkedin} from 'react-icons/ai'
+
 import * as Icon from 'react-feather'
 import Auth from './auth';
 import Card from '../../Containers/ListBuilder/Card';

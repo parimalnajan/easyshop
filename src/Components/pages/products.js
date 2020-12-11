@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from 'react'
+import React, { useEffect,useState, useContext } from 'react'
 import store from '../../store';
 import './products.scss'
 import axios from 'axios'
@@ -8,6 +8,7 @@ import * as action from '../../actions/userActions';
 
 export default function Products(props) {
 const [products, setproducts] = useState([]);
+//const [products2, setproducts2] = useContext([]);
 
 useEffect(()=>{
     axios.get('https://fakestoreapi.com/products?limit=10')

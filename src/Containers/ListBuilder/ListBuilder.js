@@ -6,7 +6,7 @@ import store from "../../store";
 import '../../App.css';
 
 import firebase, { database } from 'firebase';
-const ListBuilder =()=>{ 
+const ListBuilder =(props)=>{ 
 
        let name = {};
        let [loadingtxt, setLoadingtxt] = useState("Loading Data..");
@@ -15,18 +15,18 @@ const ListBuilder =()=>{
        let [loading, setLoading] = useState(true);
        let [uid, setUser] = useState("");
 
-       let listref = firebase.database().ref("Users/" + uid + "/List");
+       let listref = firebase.database().ref("Users/" + props.userid + "/List");
       
  
        useEffect(() => {
          firebase.auth().onAuthStateChanged(function (user) {
          
-           if (user) {
-             setUser(user.uid);
+            console.log(props.userid);
+             setUser(props.userid);
 
              let listref = firebase
                .database()
-               .ref("Users/" + user.uid + "/List");     //cant use state for some reason
+               .ref("Users/" + props.userid + "/List");     //cant use state for some reason
              listref.once("value").then((snapshot) => {
                snapshot.forEach((item) => {
                  name = item.val();
@@ -42,10 +42,7 @@ const ListBuilder =()=>{
                  
                });
              });
-           } else {
-             console.log("nouserfound temp");
-             // No user is signed in.
-           }
+          
          });
        }, []); 
   
@@ -120,7 +117,7 @@ let temp = store.getState()
 return (
   <div className="list-page-wrapper">
   
-    <InputBox additem={addItemBot} listx={listx} additemfb={fbadd} />
+    <InputBox additem={addItemBot} listx={listx} additemfb={fbadd} name={props.userid} />
     {loading ? (
       <div>{loadingtxt}</div>
     ) : (
@@ -186,5 +183,37 @@ useEffect(()=>{
                 // No user is signed in.
               }});            
               },[])
+
+
+               useEffect(() => {
+         firebase.auth().onAuthStateChanged(function (user) {
+         
+           if (user) {
+             setUser(user.uid);
+
+             let listref = firebase
+               .database()
+               .ref("Users/" + user.uid + "/List");     //cant use state for some reason
+             listref.once("value").then((snapshot) => {
+               snapshot.forEach((item) => {
+                 name = item.val();
+                 console.log(name);
+                 //setlistx(listx.push(item.val()));     let templist = [...listx];
+                 setlistx((prevlistx) => {
+                   return prevlistx.concat(item.val());
+                 });
+                 console.log(listx)
+                 if(listx===null){setLoadingtxt("EmptyList");}
+                 else{                
+                 setLoading(false);}
+                 
+               });
+             });
+           } else {
+             console.log("nouserfound ");
+             // No user is signed in.
+           }
+         });
+       }, []); 
 
 */

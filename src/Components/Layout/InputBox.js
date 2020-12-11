@@ -67,7 +67,10 @@ let idgen = () => {
 
 const addItemLocal = ()=>
 { 
-   
+   if(isNaN(qtyText)){
+     alert("please enter valid quantity");
+     return;
+   }
     let tempid = idgen();
 
     const newitem = {
@@ -77,8 +80,8 @@ const addItemLocal = ()=>
       id: tempid,
     };
 
-    if (newitem.item === "Item" || newitem.qty === "Quantity") {
-      alert("Please enter item name and quantity");
+    if (newitem.item === "Item" || newitem.item === "") {
+      alert("Please enter item name");
       return;
     }
     if (flavorText === "Variety" || flavorText === "") {
@@ -108,7 +111,7 @@ let [textcol3,setCol3]=useState("altcolor");
  <Card>
      <div className="listbox-item">
 
- 
+      <div className="listbox-title">Welcome, {props.name}</div>
     <div className="listbox-title">Please enter the details of required item </div>
           <div className="listbox-inputs">
            <input className={textcol1} onClick= {setnull1} onChange={textChangeBot1} value ={itemText}></input>

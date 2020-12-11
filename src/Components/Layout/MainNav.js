@@ -30,14 +30,14 @@ const MainNavigation = props =>{
 
             <h1 className="main-navigation__title"><Link to="/">EasyShop</Link></h1>
             <nav className="main-navigation__header-nav">
-                <NavLinks /> 
+                <NavLinks auth={props.auth}/> 
             </nav> 
 
         </Layout>
         <SideDrawer show= {drawerIsOpen} >
        
             <nav className="main-navigation__drawer-nav">
-                <NavLinks onClick={closeDrawerBot} />
+                <NavLinks auth={props.auth}onClick={closeDrawerBot} />
             </nav> {drawerIsOpen &&<BackDrop onClick={closeDrawerBot} />}     
         </SideDrawer>
        

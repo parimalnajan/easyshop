@@ -69,8 +69,8 @@ let Cart =(props)=>{
                    </div>
                 </div>
              ))}
-           <p> </p>
-          TODO: execute cart setState from parent component to avoid PRE-render after route switch</div>
+          
+          </div>
          
           <div className="cart-payment">
             <div className="text"> Price Details</div> 
