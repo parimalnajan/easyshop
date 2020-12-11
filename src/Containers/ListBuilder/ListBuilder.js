@@ -117,7 +117,7 @@ let temp = store.getState()
 return (
   <div className="list-page-wrapper">
   
-    <InputBox additem={addItemBot} listx={listx} additemfb={fbadd} name={props.userid} />
+    <InputBox additem={addItemBot} listx={listx} additemfb={fbadd} id={props.userid} name={props.name} />
     {loading ? (
       <div>{loadingtxt}</div>
     ) : (

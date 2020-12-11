@@ -94,7 +94,10 @@ let qtyDec=(id)=>{
   
 }
 
+const history = useHistory();
+
 let [isAuthenticated,setIsAuthenticated]=useState(false);
+let [name,setName]=useState('');
 const googleAuth=()=>{   
 
   var provider = new firebase.auth.GoogleAuthProvider();
@@ -119,16 +122,28 @@ const googleAuth=()=>{
     });
     
 var currentuser = firebase.auth().currentUser;
-setUser(currentuser.uid);
-setIsAuthenticated(true);
+
+
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    setIsAuthenticated(true);
 history.push(`/products`);
+setUser(user.uid);
+setName(user.displayName);
 }
-const history = useHistory();
+        else{                
+       return;}
+
+
+        });
+
+      }
 
 const demoAuth=()=>{
   setUser("demo_user");
+  
   setIsAuthenticated(true);
-
+  
   history.push(`/products`);
 }
 
@@ -146,7 +161,7 @@ useEffect(()=>{
           <Route path = "/auth" component={Login} />
           <Route path = "/account"><Register/></Route>
 
-          <Route path ="/list"> {isAuthenticated?(<ListBuilder userid={user2}/>):(<div style={{marginTop:'50px'}}>Invalid User,Please authenticate</div>)}</Route>
+          <Route path ="/list"> {isAuthenticated?(<ListBuilder userid={user2} name={name}/>):(<div style={{marginTop:'50px'}}>Invalid User,Please authenticate</div>)}</Route>
           <Route path= "/cart"> {isAuthenticated?(<Cart sendcart={tempcart} deleteCartItem={deleteHandler} qtyDec={qtyDec} qtyInc={qtyInc}/>):(<div style={{marginTop:'50px'}}>Invalid User,Please authenticate</div>)} </Route>
           <Route path= "/products">{isAuthenticated?(<Products addCall={addToCart}/>):(<div style={{marginTop:'50px'}}>Invalid User,Please authenticate</div>)} </Route>
           <Route path="/Logout"><Logout setauth={setIsAuthenticated}/></Route>

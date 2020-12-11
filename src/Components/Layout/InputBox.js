@@ -111,7 +111,7 @@ let [textcol3,setCol3]=useState("altcolor");
  <Card>
      <div className="listbox-item">
 
-      <div className="listbox-title">Welcome, {props.name}</div>
+      <div className="listbox-title">Welcome, {props.id}{props.name}</div>
     <div className="listbox-title">Please enter the details of required item </div>
           <div className="listbox-inputs">
            <input className={textcol1} onClick= {setnull1} onChange={textChangeBot1} value ={itemText}></input>
