@@ -1,5 +1,6 @@
 .inputbox-wrap{
     padding-top:3rem;
+    
 }
 
 .listbox-button{
@@ -73,7 +74,6 @@
     border: black 1px solid;
   }
 
-
-  input{
-      
-  }
+@media(max-width:1024px){
+.inputbox-wrap{margin: 0%;}
+}

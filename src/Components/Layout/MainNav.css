@@ -9,7 +9,7 @@
     flex-direction: column;
     justify-content: space-evenly;
     margin-right: 2rem;
-    margin-top: 1.8rem;
+    margin-top: 1rem;
     
     cursor: pointer;
   }
@@ -24,12 +24,13 @@
   }
   
   .main-navigation__title {
-    color: white;
+    color: white;  margin-top:0.5rem;
   }
   
   .main-navigation__title a {
     text-decoration: none;
     color: white;
+ 
   }
   
   .main-navigation__header-nav {

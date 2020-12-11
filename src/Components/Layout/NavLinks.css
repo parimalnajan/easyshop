@@ -19,6 +19,7 @@
     color: #292929;
     text-decoration: none;
     padding: 0.5rem;
+   
   }
   
   .nav-links a:hover,
@@ -60,6 +61,7 @@
     .nav-links a {
       color: white;
       text-decoration: none;
+      margin-top:11rem;
     }
   
     .nav-links button {
