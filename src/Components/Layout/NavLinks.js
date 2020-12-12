@@ -10,7 +10,7 @@ const NavLinks = props => {
          {props.auth? (<>
             <li><NavLink to ="/list">Request Products</NavLink></li>    
             <li><NavLink to ="/products">Products</NavLink></li>         
-            <li><NavLink to = "/cart">Cart</NavLink></li>
+            <li><NavLink to = "/cart">Cart ({props.cartqty})</NavLink></li>
             <li><NavLink to="/Logout">Log Out</NavLink></li></>)
             :(<>
             <li><NavLink to = "/account">Register</NavLink></li>

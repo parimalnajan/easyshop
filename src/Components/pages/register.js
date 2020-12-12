@@ -1,8 +1,16 @@
 import React, {  useState, useEffect } from 'react';
+import {BrowserRouter as Router,useHistory} from 'react-router-dom';
 import './login.scss';
 import './register.scss';
 
 let Register=()=>{
+
+    const history = useHistory();
+
+    let redirToLogin=()=>{
+
+        history.push(`/`);
+    }
 
     return(
     <div className="register-wrapper">
@@ -60,7 +68,7 @@ let Register=()=>{
            
             <button className="btn">Create Account</button>
 
-            <div className="login2">Have an account ?<a>  Log in</a></div>
+            <div className="login2">Have an account ?<a onClick={redirToLogin}>  Log in</a></div>
             
         </div>
 

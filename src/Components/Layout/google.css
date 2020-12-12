@@ -26,11 +26,12 @@
   }
   .btn-text {
     float: right;
-    margin: 11px 11px 0 0;
+    margin: 9px 10px 0 0;
     color: white;
     font-size: 14px;
-    letter-spacing: 0.2px;
-    font-family: "Roboto";
+    font-weight:300;
+    
+    
   }
   .google-btn:hover {
     box-shadow: 0 0 6px #4285f4;

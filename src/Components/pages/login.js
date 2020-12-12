@@ -5,11 +5,17 @@ import * as Auth from '../pages/auth'
 import '../Layout/google.css';
 
 import './login.scss';
+import { useHistory } from 'react-router-dom';
 
 
 let Login=(props)=>{
     let[au,Setau]= useState('');
     let[showstuff,setstuff]=useState(false); 
+    const history=useHistory();
+    let redirToRegister=()=>{
+
+        history.push(`/account`);
+    }
 
     return(
     <div className="login-wrapper">
@@ -32,10 +38,10 @@ let Login=(props)=>{
                      <div className="resetpass"><a>Reset Password?</a></div> 
             </div>
 
-            <button style={{marginBottom:"4px"}}>Sign In</button>
+            <button style={{marginBottom:"4px"}}>Sign in</button>
             <button onClick={props.demoAuth}>Demo</button>
 
-            <div className="login2">Don't Have an account yet? <a>Join EasyShop</a> Or:</div>
+            <div className="login2">Don't Have an account yet? <a onClick={redirToRegister}>Join EasyShop</a> Or:</div>
             <div id="google" onClick={props.googleAuth}><Googlebutton/><p></p></div>
             
             

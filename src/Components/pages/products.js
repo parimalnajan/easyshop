@@ -28,6 +28,9 @@ let addCart = (id) =>{
 props.addCall(products[id]);
 }
 
+let buynow=(id)=>{
+    props.buynow(products[id]);
+}
 
 
     return ( 
@@ -44,7 +47,12 @@ props.addCall(products[id]);
                 <div className="product-price">${item.price}</div>
                 </div>
                 <div className="btn-wrap">
-                    <button className="buy-btn" onClick={()=>console.log(item.id)}>Buy Now</button>
+
+                    <button className="buy-btn" onClick={()=>{
+                        console.log(item.id)
+                             buynow(item.id-1)
+                             }}>Buy Now</button>
+
                     <button className="cart-btn" onClick={()=>
                         addCart(item.id-1)
                     }>Add to cart</button>

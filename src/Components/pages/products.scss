@@ -23,7 +23,8 @@ $i:40px;
 }
 
 .product-card{
-
+    border: 3px solid white;
+    border-radius: 12px;
 display: flex;
 flex-direction: column;
 background-color:white;
@@ -33,15 +34,14 @@ justify-content:space-between;
  height:$i*10 ;
  width:$u*8;
  padding:$e;
- margin:$w;
+ 
 
  }
 
  
 .product-card:hover{
-    border: 2px groove silver;
-    border-right: 2px groove silver;
-    border-radius: $e;
+    border:3px groove silver;
+    
  
 }
 

@@ -48,20 +48,38 @@ let App=() =>{
     console.log(tempstate);
   }
 
-
+const history = useHistory();
 let [tempcart, setCart] = useState([]); //Cart Array
+let [len,setLen]=useState(0);
 
-let addToCart = (cartArr) => {
-   console.log(cartArr);
-
+let addToCart = (toadd) => {
+ 
+   console.log("adding now",toadd);
    setCart((prevCart) => {
-      let temp = prevCart.concat(cartArr);
-
+      let temp = prevCart.concat(toadd);
       return temp;
    });
-
+   alert(`Added successfully: ${toadd.title}`)      
    console.log(tempcart);
 };
+
+useEffect(()=>{             //Subscribes to cart array and updates length value
+  let wait=tempcart.length;
+  setLen(wait);
+  console.log(len);
+},[tempcart]);
+
+const buynow =(tobuy)=>{
+  console.log("buying now",tobuy);
+  setCart([]);
+  setCart((prevCart) => {
+    let temp = prevCart.concat(tobuy);
+    return temp;
+ });
+
+  history.push(`/cart`);
+}
+
 
 let deleteHandler=(id2)=>{
   setCart((oldcart)=>{
@@ -86,15 +104,19 @@ let qtyInc=(id)=>{
 
 let qtyDec=(id)=>{
   let temp=[...tempcart]
-  console.log(temp)
-  console.log(id);
+  console.log("dec called:",temp)
+  console.log("id:",id);
+  if(temp[id].qty>0){
   temp[id].qty--;
   setCart(temp);
-     console.log(tempcart[id].qty)
+     console.log(tempcart[id].qty)}
+     else return;
+     
+
   
 }
 
-const history = useHistory();
+
 
 let [isAuthenticated,setIsAuthenticated]=useState(false);
 let [name,setName]=useState('');
@@ -133,8 +155,6 @@ setName(user.displayName);
 }
         else{                
        return;}
-
-
         });
 
       }
@@ -148,13 +168,17 @@ const demoAuth=()=>{
 }
 
 
+
 useEffect(()=>{
   console.log(user2,":logged in")
+
 },[user2]);
+
+
 
   return firebaseinit!==false? (
 
-    <div className="app-wrapper"><MainNavigation auth={isAuthenticated}/>   
+    <div className="app-wrapper"><MainNavigation auth={isAuthenticated} cartqty={len}/>   
      
         <Switch>
           <Route path exact = "/"> <Login googleAuth={googleAuth} demoAuth={demoAuth}/> </Route>
@@ -163,7 +187,7 @@ useEffect(()=>{
 
           <Route path ="/list"> {isAuthenticated?(<ListBuilder userid={user2} name={name}/>):(<div style={{marginTop:'50px'}}>Invalid User,Please authenticate</div>)}</Route>
           <Route path= "/cart"> {isAuthenticated?(<Cart sendcart={tempcart} deleteCartItem={deleteHandler} qtyDec={qtyDec} qtyInc={qtyInc}/>):(<div style={{marginTop:'50px'}}>Invalid User,Please authenticate</div>)} </Route>
-          <Route path= "/products">{isAuthenticated?(<Products addCall={addToCart}/>):(<div style={{marginTop:'50px'}}>Invalid User,Please authenticate</div>)} </Route>
+          <Route path= "/products">{isAuthenticated?(<Products addCall={addToCart} buynow={buynow}/>):(<div style={{marginTop:'50px'}}>Invalid User,Please authenticate</div>)} </Route>
           <Route path="/Logout"><Logout setauth={setIsAuthenticated}/></Route>
         </Switch>
      
